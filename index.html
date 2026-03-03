@@ -11,27 +11,8 @@
 
   <!-- Custom JS -->
   <script defer src="js/script.js"></script>
-</head>
-<body class="bg-gray-900 text-white">
-
-
-<!-- Background Music -->
-  <audio id="aboutMusic" loop="" class="">
-    <source src="audios/Kick_Back.mp3" type="audio/mp3" class="">
-  </audio>
-
-<button id="musicToggle"
-  class="fixed bottom-6 right-6 z-[9999]
-         w-14 h-14 sm:w-12 sm:h-12
-         rounded-full
-         flex items-center justify-center
-         text-2xl sm:text-xl
-         bg-orange-500
-         shadow-[0_0_20px_rgba(255,106,0,0.7)]
-         transition duration-300
-         hover:scale-110 active:scale-95">
-  🔇
-</button>
+  </head>
+  <body class="bg-gray-900 text-white">
 
 <!-- Scroll Progress Bar -->
 <div id="progressBar"
@@ -40,6 +21,25 @@
 <!-- Neon Cursor Glow -->
 <div id="cursorGlow"
      class="fixed w-4 h-4 rounded-full bg-[#39ff14] shadow-[0_0_20px_#39ff14,0_0_40px_#ff6a00] pointer-events-none -translate-x-1/2 -translate-y-1/2 z-[9999] transition-all duration-200"></div>
+
+<!-- Background Music -->
+<audio id="aboutMusic" loop>
+  <source src="audios/Kick_Back.mp3" type="audio/mp3">
+</audio>
+
+<!-- Music Toggle Button -->
+<button id="musicToggle" 
+      class="pulse-btn fixed bottom-6 right-6 z-[100000]
+       w-18 h-18 md:w-20 md:h-20
+       rounded-full 
+       flex items-center justify-center
+       text-2xl md:text-3xl
+       bg-black/60 text-orange-400
+       shadow-[0_0_18px_rgba(255,106,0,0.7)]
+       transition duration-300 
+       hover:scale-110 active:scale-95">
+  🔇
+</button>
 
 <!-- NAVBAR -->
 <nav class="navbar fixed w-full z-50 bg-black/70 backdrop-blur-md transition-all duration-400">

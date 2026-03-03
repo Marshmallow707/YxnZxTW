@@ -28,27 +28,20 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /* ---------------- Music Button ---------------- */
-const musicBtn = document.getElementById('musicToggle');
-const music = document.getElementById('aboutMusic');
+  const music = document.getElementById('aboutMusic');
+const toggleBtn = document.getElementById('musicToggle');
 
-musicBtn.textContent = '🔇';
-musicBtn.classList.add('muted');
-
-musicBtn.addEventListener('click', () => {
+toggleBtn.addEventListener('click', () => {
   if (music.paused) {
-    music.play().then(() => {
-      musicBtn.textContent = '🔊';
-      musicBtn.classList.remove('muted');
-      musicBtn.classList.add('playing');
-    });
+    music.play();
+    toggleBtn.classList.remove('muted');
+    toggleBtn.textContent = '🔊';
   } else {
     music.pause();
-    musicBtn.textContent = '🔇';
-    musicBtn.classList.remove('playing');
-    musicBtn.classList.add('muted');
+    toggleBtn.classList.add('muted');
+    toggleBtn.textContent = '🔇';
   }
 });
-
   /* ---------------- Scroll Reveal ---------------- */
   function revealElements() {
     let reveals = document.querySelectorAll('.reveal');

@@ -38,29 +38,30 @@ body {
   overflow-x:hidden;
 }
 
-/* Pulse animation for playing state */
+/* Pulse Animation */
 @keyframes pulseButton {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 15px #39ff14;
-  }
-  50% {
-    transform: scale(1.15);
-    box-shadow: 0 0 30px #39ff14, 0 0 60px #39ff14;
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 15px #39ff14;
-  }
+  0% { transform: scale(1); box-shadow: 0 0 15px #39ff14; }
+  50% { transform: scale(1.15); box-shadow: 0 0 30px #39ff14, 0 0 60px #39ff14; }
+  100% { transform: scale(1); box-shadow: 0 0 15px #39ff14; }
 }
 
-#musicToggle.playing {
+/* Button Style */
+.pulse-btn {
+  position: fixed;       
+  bottom: 24px;             
+  right: 24px; 
+  color: #000;
   background-color: #39ff14;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
   animation: pulseButton 1.5s infinite ease-in-out;
   box-shadow: 0 0 30px #39ff14, 0 0 60px #39ff14;
+  transition: background-color 0.2s, color 0.2s;
+  z-index: 100000;
 }
 
-#musicToggle.muted {
+.pulse-btn.muted {
   background-color: #ff6a00;
   box-shadow: 0 0 20px #ff6a00;
   animation: none;
