@@ -29,7 +29,6 @@ p {
   font-family: 'ShareTechMono', monospace;
 }
 
-
 body {
   margin:0;
   background:#000;
@@ -37,6 +36,34 @@ body {
   font-family:'Orbitron', sans-serif;
   scroll-behavior:smooth;
   overflow-x:hidden;
+}
+
+/* Pulse animation for playing state */
+@keyframes pulseButton {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 15px #39ff14;
+  }
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 0 30px #39ff14, 0 0 60px #39ff14;
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 15px #39ff14;
+  }
+}
+
+#musicToggle.playing {
+  background-color: #39ff14;
+  animation: pulseButton 1.5s infinite ease-in-out;
+  box-shadow: 0 0 30px #39ff14, 0 0 60px #39ff14;
+}
+
+#musicToggle.muted {
+  background-color: #ff6a00;
+  box-shadow: 0 0 20px #ff6a00;
+  animation: none;
 }
 
 /* Scroll Progress Bar */
@@ -51,7 +78,7 @@ body {
 }
 
 /* Neon Cursor */
-.cursor-glow {
+#cursorGlow {
   width: 15px;
   height: 15px;
   border-radius: 50%;
@@ -63,6 +90,12 @@ body {
   z-index: 9999;
   transition: width 0.2s ease, height 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
   opacity: 1;
+}
+
+body:active #cursorGlow {
+  width: 25px;
+  height: 25px;
+  box-shadow: 0 0 30px #39ff14, 0 0 60px #ff6a00;
 }
 
 /* Optional: enlarge on click */
@@ -83,38 +116,101 @@ body:active .cursor-glow {
   transform:translateY(0);
 }
 
-/* Normal navbar */
+/* Navbar Shrink */
 .navbar {
   padding: 20px 0;
   transition: padding 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease;
 }
-
-/* Shrunk navbar */
 .navbar.shrink {
   padding: 8px 0;
-  background-color: #000;
+  background-color: rgba(0,0,0,1);
   box-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
 
-/* Shrink logo */
+/* Neon Logo with Pulse Animation & More Edge Padding */
 .navbar-brand {
-  font-size: 1.5rem;
-  transition: font-size 0.4s ease;
+  color: #39ff14; /* neon green */
+  text-shadow: 0 0 5px #39ff14, 0 0 15px #39ff14, 0 0 30px #39ff14, 0 0 50px #00ff99;
+  animation: pulseLogo 2s infinite alternate;
+  font-weight: bold;
+
+  /* Move further away from the left edge
+  margin-left: 100px;  */
 }
 
-.navbar.shrink .navbar-brand {
-  font-size: 1.2rem;
+/* Pulse keyframes */
+@keyframes pulseLogo {
+  0% {
+    text-shadow: 0 0 5px #39ff14, 0 0 15px #39ff14, 0 0 30px #39ff14, 0 0 50px #00ff99;
+  }
+  50% {
+    text-shadow: 0 0 10px #39ff14, 0 0 25px #39ff14, 0 0 40px #39ff14, 0 0 70px #00ff99;
+  }
+  100% {
+    text-shadow: 0 0 5px #39ff14, 0 0 15px #39ff14, 0 0 30px #39ff14, 0 0 50px #00ff99;
+  }
 }
 
+/* Adjust navbar padding to match new logo position */
 .navbar {
-  background-color: rgba(0,0,0,0.7);
-  transition: padding 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease;
+  padding-left: 40px; /* match margin-left of logo */
+  padding-right: 60px;
 }
 
-.navbar.shrink {
-  background-color: rgba(0,0,0,1);
+/* Menu Links */
+.nav-link {
+  color: #39ff14; /* green default */
+  transition: color 0.2s ease;
+}
+.nav-link:hover {
+  color: #ff6a00; /* orange on hover */
+}
+.nav-link.active {
+  color: #ff6a00;
 }
 
+/* Dropdown links */
+.dropdown-link {
+  color: #39ff14;
+  display: block;
+  transition: color 0.2s ease;
+}
+.dropdown-link:hover,
+.dropdown-link.active {
+  color: #ff6a00;
+}
+
+/* Dropdown hover display */
+.group:hover > ul {
+  display: block;
+}
+
+/* Mobile Menu */
+#nav-links.mobile-open {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  padding: 12px 0;
+}
+
+/* Spacing tweaks */
+#nav-links li {
+  margin: 0;
+}
+
+/* Mobile adjustments */
+@media (max-width: 1024px) {
+  .navbar-brand {
+  }
+  #nav-links {
+    gap: 12px !important;
+  }
+}
 
 /* HERO */
 .hero {
@@ -249,76 +345,6 @@ footer {
 .footer-tag {
   color:#ff6a00;
   text-shadow:0 0 15px #ff6a00;
-}
-
-/* Floating Neon Music Button */
-.floating-music-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  border: none;
-
-  background: #ff6a00; /* default = muted */
-  color: #000;
-  font-size: 1.5rem;
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  box-shadow: 0 0 20px #ff6a00;
-  transition: all 0.3s ease;
-}
-
-/* Playing Pulse Animation */
-@keyframes pulseButton {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 15px #39ff14;
-  }
-  50% {
-    transform: scale(1.15);
-    box-shadow: 0 0 30px #39ff14, 0 0 60px #39ff14;
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 15px #39ff14;
-  }
-}
-
-/* Playing State */
-.floating-music-btn.playing {
-  background: #39ff14;
-  animation: pulseButton 1.5s infinite ease-in-out;
-}
-
-/* Muted / Paused State */
-.floating-music-btn.muted {
-  background: #ff6a00;
-  box-shadow: 0 0 20px #ff6a00;
-  animation: none;
-}
-
-/* Hover Effect (only scale, no animation conflict) */
-.floating-music-btn:hover {
-  transform: scale(1.1);
-}
-
-/* Mobile Adjustments */
-@media (max-width: 768px) {
-  .floating-music-btn {
-    width: 50px;
-    height: 50px;
-    font-size: 1.2rem;
-    bottom: 15px;
-    right: 15px;
-  }
 }
 
 #news img {
