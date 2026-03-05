@@ -30,85 +30,76 @@
 <!-- Music Toggle Button -->
 <button id="musicToggle" 
       class="pulse-btn fixed bottom-6 right-6 z-[100000]
-       w-18 h-18 md:w-20 md:h-20
        rounded-full 
        flex items-center justify-center
-       text-2xl md:text-3xl
        bg-black/60 text-orange-400
-       shadow-[0_0_18px_rgba(255,106,0,0.7)]
+       shadow-lg
        transition duration-300 
        hover:scale-110 active:scale-95">
   🔇
 </button>
 
+<!-- Mobile Toggle -->
+<button id="nav-toggle" class="lg:hidden">
+  ☰
+</button>
+
+
 <!-- NAVBAR -->
-<nav class="navbar fixed w-full z-50 bg-black/70 backdrop-blur-md transition-all duration-400">
+<nav class="navbar fixed w-full z-50">
   <div class="container mx-auto flex items-center justify-between px-6 lg:px-12">
 
     <!-- Logo -->
-    <a href="#" class="navbar-brand ml-4 lg:ml-8 text-5xl lg:text-6xl font-bold neon-logo animate-pulseLogo">
-      YxnZx
-    </a>
+    <a href="#" class="navbar-brand font-bold">YxnZx</a>
 
-    <!-- Toggler for mobile -->
-    <button id="nav-toggle" class="lg:hidden text-green-400 text-2xl focus:outline-none top-4 left-4">
-      ☰
-    </button>
-
-    <!-- Menu -->
+    <!-- Desktop Menu -->
     <ul id="nav-links" class="hidden lg:flex items-center space-x-16 text-xl font-semibold text-green-400">
-      <li><a href="#home" class="nav-link px-3 py-2 rounded">Home</a></li>
-      <li><a href="#about" class="nav-link px-3 py-2 rounded">About MX</a></li>
-      <li><a href="#news" class="nav-link px-3 py-2 rounded">NewZ</a></li>
-      <li><a href="#updates" class="nav-link px-3 py-2 rounded">UpdateZ</a></li>
+      <li><a href="#home" class="nav-link px-4">Home</a></li>
+      <li><a href="#about" class="nav-link px-4">AboutMX</a></li>
+      <li><a href="#news" class="nav-link px-4">NewZ</a></li>
+      <li><a href="#updates" class="nav-link px-4">UpdateZ</a></li>
+
+      <!-- Desktop Dropdown -->
       <li class="relative group">
         <button class="nav-link flex items-center gap-1 px-3 py-2 rounded">FAVEZ ▾</button>
-        <ul class="absolute left-0 mt-2 hidden group-hover:block bg-black/90 rounded-lg shadow-lg py-2 min-w-[200px]">
-          <li><a href="#character" class="dropdown-link text-sm px-4 py-2 rounded">CharacterZ</a></li>
-          <li><a href="#series" class="dropdown-link text-sm px-4 py-2 rounded">SerieZ</a></li>
-          <li><a href="#movies" class="dropdown-link text-sm px-4 py-2 rounded">MovieZ</a></li>
-          <li><a href="#music" class="dropdown-link text-sm px-4 py-2 rounded">MusicZ</a></li>
-          <li><a href="#quotes" class="dropdown-link text-sm px-4 py-2 rounded">QuoteZ</a></li>
-          <li><a href="#cool" class="dropdown-link text-sm px-4 py-2 rounded">Cool StuffZ</a></li>
-        </ul>
-      </li>
-    </ul>
-
-  </div>
-</nav>
-
-    <!-- Mobile Toggle -->
-    <button id="menu-btn" class="lg:hidden text-green-400 focus:outline-none text-base">
-      <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-    </button>
-  </div>
-
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden lg:hidden bg-black/90">
-    <ul class="flex flex-col space-y-2 px-4 py-3 text-green-400 font-semibold">
-      <li><a href="#home" class="hover:text-orange-500 transition-colors duration-300 text-base">Home</a></li>
-      <li><a href="#about" class="hover:text-orange-500 transition-colors duration-300 text-sm">About MX</a></li>
-      <li><a href="#news" class="hover:text-orange-500 transition-colors duration-300 text-sm">NewZ</a></li>
-      <li><a href="#updates" class="hover:text-orange-500 transition-colors duration-300 text-sm">UpdateZ</a></li>
-
-      <!-- Mobile Dropdown -->
-      <li>
-        <button class="w-full text-left flex items-center justify-between hover:text-orange-500 transition-colors duration-300">
-          FAVEZ ▾
-        </button>
-        <ul class="hidden pl-4 mt-2 space-y-1">
-          <li><a href="#character" class="block hover:text-orange-500">CharacterZ</a></li>
-          <li><a href="#series" class="block hover:text-orange-500">SerieZ</a></li>
-          <li><a href="#movies" class="block hover:text-orange-500">MovieZ</a></li>
-          <li><a href="#music" class="block hover:text-orange-500">MusicZ</a></li>
-          <li><a href="#quotes" class="block hover:text-orange-500">QuoteZ</a></li>
-          <li><a href="#cool" class="block hover:text-orange-500">Cool StuffZ</a></li>
+        <ul class="dropdown-menu absolute left-0 mt-2 hidden bg-black/90 rounded-lg shadow-lg py-2 min-w-[200px]">
+          <li><a href="#character" class="dropdown-link">CharacterZ</a></li>
+          <li><a href="#series" class="dropdown-link">SerieZ</a></li>
+          <li><a href="#movies" class="dropdown-link">MovieZ</a></li>
+          <li><a href="#music" class="dropdown-link">MusicZ</a></li>
+          <li><a href="#quotes" class="dropdown-link">QuoteZ</a></li>
+          <li><a href="#cool" class="dropdown-link">Cool StuffZ</a></li>
         </ul>
       </li>
     </ul>
   </div>
+
+  
+  <!-- Floating Mobile Menu -->
+  <div id="mobile-menu">
+  <div class="menu-content">
+
+    <a href="#home">Home</a>
+    <a href="#about">About MX</a>
+    <a href="#news">NewZ</a>
+    <a href="#updates">UpdateZ</a>
+
+    <div class="mobile-dropdown">
+      <button class="dropdown-toggle">FAVEZ ▾</button>
+
+      <div class="dropdown-menu">
+        <a href="#character">CharacterZ</a>
+        <a href="#series">SerieZ</a>
+        <a href="#movies">MovieZ</a>
+        <a href="#music">MusicZ</a>
+        <a href="#quotes">QuoteZ</a>
+        <a href="#cool">Cool StuffZ</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 </nav>
 
 <!-- HERO -->

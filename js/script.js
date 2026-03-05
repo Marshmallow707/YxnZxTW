@@ -29,10 +29,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /* ---------------- Music Button ---------------- */
   const music = document.getElementById('aboutMusic');
-const toggleBtn = document.getElementById('musicToggle');
+  const toggleBtn = document.getElementById('musicToggle');
 
-toggleBtn.addEventListener('click', () => {
-  if (music.paused) {
+  toggleBtn.addEventListener('click', () => {
+    if (music.paused) {
     music.play();
     toggleBtn.classList.remove('muted');
     toggleBtn.textContent = '🔊';
@@ -42,6 +42,7 @@ toggleBtn.addEventListener('click', () => {
     toggleBtn.textContent = '🔇';
   }
 });
+
   /* ---------------- Scroll Reveal ---------------- */
   function revealElements() {
     let reveals = document.querySelectorAll('.reveal');
@@ -72,11 +73,13 @@ toggleBtn.addEventListener('click', () => {
 const navbar = document.querySelector(".navbar");
 let lastScrollY = 0;
 let ticking = false;
+
 window.addEventListener("scroll", () => {
   lastScrollY = window.scrollY;
+
   if (!ticking) {
     requestAnimationFrame(() => {
-      if (lastScrollY > 50) {
+      if (lastScrollY > 50) {            // start shrinking after 50px
         navbar.classList.add("shrink");
       } else {
         navbar.classList.remove("shrink");
@@ -105,11 +108,29 @@ dropdownLinks.forEach(link => {
   });
 });
 
-// Mobile toggle
+// Mobile toggle (menu)
 const navToggle = document.getElementById('nav-toggle');
-const navMenu = document.getElementById('nav-links');
+const mobileMenu = document.getElementById('mobile-menu');
+
 navToggle.addEventListener('click', () => {
-  navMenu.classList.toggle('mobile-open');
+  mobileMenu.classList.toggle('active');
+  
+  if (mobileMenu.classList.contains('active')) {
+    navToggle.textContent = "✖";
+  } else {
+    navToggle.textContent = "☰";
+  }
+});
+
+// Mobile dropdown toggle inside floating menu
+const mobileDropdowns = mobileMenu.querySelectorAll('.dropdown-toggle');
+mobileDropdowns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const dropdown = btn.nextElementSibling;
+    if (dropdown) {
+      dropdown.classList.toggle('active');
+    }
+  });
 });
 
   /* ---------------- Quote Toggle ---------------- */

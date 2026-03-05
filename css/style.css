@@ -47,14 +47,25 @@ body {
 
 /* Button Style */
 .pulse-btn {
-  position: fixed;       
-  bottom: 24px;             
-  right: 24px; 
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+
+  width: 60px;      /* 👈 CONTROL SIZE HERE */
+  height: 60px;     /* 👈 CONTROL SIZE HERE */
+
+  display: flex;     /* keep emoji centered */
+  align-items: center;
+  justify-content: center;
+
+  font-size: 24px;   /* 👈 emoji size */
+
   color: #000;
   background-color: #39ff14;
   border: none;
-  border-radius: 12px;
+  border-radius: 50%;  /* 👈 make it perfectly round */
   cursor: pointer;
+
   animation: pulseButton 1.5s infinite ease-in-out;
   box-shadow: 0 0 30px #39ff14, 0 0 60px #39ff14;
   transition: background-color 0.2s, color 0.2s;
@@ -65,7 +76,7 @@ body {
   background-color: #ff6a00;
   box-shadow: 0 0 20px #ff6a00;
   animation: none;
-}
+} 
 
 /* Scroll Progress Bar */
 #progressBar {
@@ -99,7 +110,7 @@ body:active #cursorGlow {
   box-shadow: 0 0 30px #39ff14, 0 0 60px #ff6a00;
 }
 
-/* Optional: enlarge on click */
+/* Enlarge button on click */
 body:active .cursor-glow {
   width: 25px;
   height: 25px;
@@ -117,29 +128,62 @@ body:active .cursor-glow {
   transform:translateY(0);
 }
 
-/* Navbar Shrink */
+/* Navbar Shrink & Styling */
 .navbar {
-  padding: 20px 0;
-  transition: padding 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease;
-}
-.navbar.shrink {
-  padding: 8px 0;
-  background-color: rgba(0,0,0,1);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  position: fixed;
+  width: 100%;
+  z-index: 50;
+  background-color: rgba(0,0,0,0.7);
+  backdrop-blur: 8px;
+  padding: 24px 60px 24px 40px; /* bigger initial padding for more shrink effect */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: 
+    padding 0.3s ease,       /* shrink effect */
+    background-color 0.3s ease, 
+    box-shadow 0.3s ease;
 }
 
-/* Neon Logo with Pulse Animation & More Edge Padding */
+/* Logo & links base size */
 .navbar-brand {
-  color: #39ff14; /* neon green */
+  color: #39ff14;
+  font-size: 72px;
+  font-weight: bold;
+  transition: font-size 0.3s ease, transform 0.3s ease;
+}
+
+#nav-links li a {
+  font-size: 20px;
+  transition: font-size 0.3s ease, padding 0.3s ease;
+}
+
+/* Shrink everything when scrolling */
+.navbar.shrink {
+  padding: 4px 60px 4px 40px;   /* top/bottom padding smaller */
+  background-color: rgba(0,0,0,1);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.6);
+}
+
+.navbar.shrink .navbar-brand {
+  font-size: 40px;               /* smaller logo */
+  transform: scale(0.75);        /* optional subtle shrink */
+}
+
+.navbar.shrink #nav-links li a {
+  font-size: 14px;               /* shrink link text */
+}
+
+/* Neon Logo with Pulse */
+.navbar-brand {
+  color: #39ff14;
+  font-weight: bold;
+  font-size: 50px;
+  margin-left: 20px;
   text-shadow: 0 0 5px #39ff14, 0 0 15px #39ff14, 0 0 30px #39ff14, 0 0 50px #00ff99;
   animation: pulseLogo 2s infinite alternate;
-  font-weight: bold;
-
-  /* Move further away from the left edge
-  margin-left: 100px;  */
 }
 
-/* Pulse keyframes */
 @keyframes pulseLogo {
   0% {
     text-shadow: 0 0 5px #39ff14, 0 0 15px #39ff14, 0 0 30px #39ff14, 0 0 50px #00ff99;
@@ -152,66 +196,135 @@ body:active .cursor-glow {
   }
 }
 
-/* Adjust navbar padding to match new logo position */
-.navbar {
-  padding-left: 40px; /* match margin-left of logo */
-  padding-right: 60px;
-}
-
 /* Menu Links */
 .nav-link {
-  color: #39ff14; /* green default */
+  color: #39ff14;
   transition: color 0.2s ease;
+  font-size: 18px;
 }
-.nav-link:hover {
-  color: #ff6a00; /* orange on hover */
-}
+.nav-link:hover,
 .nav-link.active {
   color: #ff6a00;
 }
 
-/* Dropdown links */
-.dropdown-link {
-  color: #39ff14;
-  display: block;
-  transition: color 0.2s ease;
+/* Dropdown Menu */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  background: rgba(0,0,0,0.9);
+  border-radius: 6px;
+  padding: 4px 0;
+  min-width: 160px;
+  z-index: 999;
 }
+
+.group:hover > .dropdown-menu {
+  display: block; /* desktop hover */
+}
+
+.dropdown-link {
+  display: block;
+  color: #39ff14;
+  padding: 6px 16px;
+  transition: color 0.2s;
+}
+
 .dropdown-link:hover,
 .dropdown-link.active {
   color: #ff6a00;
 }
 
-/* Dropdown hover display */
-.group:hover > ul {
-  display: block;
+/* Toggle Icon - Always Top Right */
+#nav-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 28px;
+  color: #39ff14;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 2000;
+  transition: transform 0.2s ease;
 }
 
-/* Mobile Menu */
-#nav-links.mobile-open {
+#nav-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* Floating Mobile Menu */
+#mobile-menu {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  opacity: 0;
+  visibility: hidden;
+
+  width: 260px;
+  padding: 24px 20px;
+  
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+  
+  border-radius: 18px;
+  box-shadow: 0 0 30px rgba(0, 255, 100, 0.2);
+  
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  background-color: rgba(0, 0, 0, 0.7);
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  padding: 12px 0;
+  gap: 16px;
+  
+  z-index: 1500;
+  
+  transition: all 0.3s ease;
 }
 
-/* Spacing tweaks */
-#nav-links li {
-  margin: 0;
+/* Active State (Pop In) */
+#mobile-menu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
 }
 
-/* Mobile adjustments */
-@media (max-width: 1024px) {
-  .navbar-brand {
-  }
-  #nav-links {
-    gap: 12px !important;
-  }
+.menu-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;   /* MASTER spacing control */
 }
+
+/* Center all links & buttons */
+#mobile-menu a,
+#mobile-menu button {
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+#mobile-menu a:hover,
+#mobile-menu button:hover {
+  color: #ff6a00;
+}
+
+/* Dropdown inside mobile */
+#mobile-menu .dropdown-menu {
+  display: none;
+  position: static; 
+  background: rgba(255,255,255,0.08); 
+  min-width: unset; 
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  margin-top: 10px;
+  border-radius: 12px;
+}
+
+#mobile-menu .dropdown-menu.active {
+  display: flex;
+}
+
 
 /* HERO */
 .hero {
