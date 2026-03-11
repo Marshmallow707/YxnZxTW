@@ -221,7 +221,7 @@ body:active .cursor-glow {
 }
 
 .group:hover > .dropdown-menu {
-  display: block; /* desktop hover */
+  display: block; 
 }
 
 .dropdown-link {
@@ -325,9 +325,74 @@ body:active .cursor-glow {
   display: flex;
 }
 
+/* Section Title Banner */
+.section-title {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  text-align: center;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+/* Section Divider */
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px auto 40px auto;
+  max-width: 800px;
+}
+
+.section-divider::before,
+.section-divider::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #39ff14, #ff6a00, transparent);
+  box-shadow: 0 0 8px #39ff14;
+}
+
+.section-divider span {
+  color: #ff6a00;
+  font-size: 1.2rem;
+  text-shadow: 0 0 10px #ff6a00;
+  letter-spacing: 4px;
+}
+
+/* Section Spacer - Glowing Dots */
+.section-spacer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 30px 0;
+}
+
+.section-spacer span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.section-spacer span:nth-child(1) { background: #39ff14; box-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14; animation: dotPulse 1.5s infinite 0s; }
+.section-spacer span:nth-child(2) { background: #ff6a00; box-shadow: 0 0 10px #ff6a00, 0 0 20px #ff6a00; animation: dotPulse 1.5s infinite 0.2s; }
+.section-spacer span:nth-child(3) { background: #00cfff; box-shadow: 0 0 10px #00cfff, 0 0 20px #00cfff; animation: dotPulse 1.5s infinite 0.4s; }
+.section-spacer span:nth-child(4) { background: #39ff14; box-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14; animation: dotPulse 1.5s infinite 0.6s; }
+.section-spacer span:nth-child(5) { background: #ff6a00; box-shadow: 0 0 10px #ff6a00, 0 0 20px #ff6a00; animation: dotPulse 1.5s infinite 0.8s; }
+.section-spacer span:nth-child(6) { background: #00cfff; box-shadow: 0 0 10px #00cfff, 0 0 20px #00cfff; animation: dotPulse 1.5s infinite 1s; }
+.section-spacer span:nth-child(7) { background: #39ff14; box-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14; animation: dotPulse 1.5s infinite 1.2s; }
+
+@keyframes dotPulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.8); opacity: 1; }
+}
+
 
 /* HERO */
 .hero {
+  padding-top: 120px;
   height:100vh;
   display:flex;
   align-items:center;
@@ -372,7 +437,7 @@ body:active .cursor-glow {
   margin-top:15px;
 }
 
-/* ABOUT VIDEO */
+/* AboutMX */
 #about {
   position:relative;
   min-height:100vh;
@@ -405,94 +470,78 @@ body:active .cursor-glow {
 .about-text {
   max-width:800px;
   line-height:1.8;
+  color:#e6e6e6;
+  text-shadow:0 0 6px rgba(0,255,120,0.2);
 }
 
-/* Cards */
-.card {
-  background-color:#111;
-  border:1px solid #39ff14;
-  transition:0.3s;
+/* NewZ */
+/* Card container */
+.news-card {
+  width: 300px;
+  padding: 12px;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s ease;
+  background: rgba(0,0,0,0.55);  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center; 
 }
 
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow:0 0 20px #39ff14;
+/* Image size */
+.news-card img {
+  width: 100px;
+  margin: auto;
+  border-radius: 10px;
+  transition: all 0.35s ease;
 }
 
-/* Dropdown */
-.dropdown-menu {
-  background:#111;
+/* Lift effect */
+.news-card:hover {
+  transform: translateY(-8px) scale(1.05);
 }
 
-.dropdown-item {
-  color:#39ff14;
+/* Circular Rotating Glow */
+.news-card::before {
+  content: "";
+  position: absolute;
+  inset: -6px;             
+  border-radius: 50%;       
+  background: conic-gradient(
+    #39ff14,
+    #ff6a00,
+    #39ff14,
+    #ff6a00,
+    #39ff14
+  );
+  filter: blur(12px);       
+  opacity: 0;
+  z-index: -1;
+  animation: rotateGlow 4s linear infinite;
+  transition: opacity 0.3s ease;
 }
 
-.dropdown-item:hover {
-  background:#000;
-  color:#ff6a00;
+/* Show glow on hover */
+.news-card:hover::before {
+  opacity: 1;
 }
 
-/* Quote Reveal */
-.quote-box {
-  background:#111;
-  border:1px solid #39ff14;
-  padding:30px;
-  cursor:pointer;
-  transition:0.4s;
-}
-.quote-box:hover {
-  box-shadow:0 0 20px #39ff14;
-}
-.hidden-quote {
-  display:none;
-  margin-top:20px;
-  color:#ff6a00;
+/* rotation animation */
+@keyframes rotateGlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-/* Footer */
-footer {
-  padding:20px;
-  text-align:center;
-  border-top:1px solid #39ff14;
-}
-.footer-tag {
-  color:#ff6a00;
-  text-shadow:0 0 15px #ff6a00;
-}
-
-#news img {
-  border: 2px solid #39ff14;       
-  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
-  width: 100%;
-  max-height: 550px;               
-  object-fit: cover;
-}
-
-#news img:hover {
-  transform: scale(1.05);          
-  border-color: #ff6a00;           
-  box-shadow: 
-    0 0 10px #39ff14,
-    0 0 20px #ff6a00,
-    0 0 30px #39ff14,
-    0 0 40px #ff6a00;             
-}
-
-/* Optional: Pulse glow animation */
-@keyframes pulseGlowThumb {
-  0% { box-shadow: 0 0 10px #39ff14, 0 0 20px #ff6a00; }
-  50% { box-shadow: 0 0 20px #39ff14, 0 0 40px #ff6a00; }
-  100% { box-shadow: 0 0 10px #39ff14, 0 0 20px #ff6a00; }
-}
-
-#news img:hover {
-  animation: pulseGlowThumb 1.5s infinite;
-}
-
+/* UpdateZ */
 #updates .social-card img {
   width: 100%;
-  max-height: 500px;
+  max-height: 300px; 
   object-fit: cover;
   border: 2px solid #39ff14;
   transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
@@ -515,28 +564,11 @@ footer {
   margin-top: 5px;
 }
 
-#character .carousel-inner img {
-  max-height: 900px;       
-  object-fit: cover;
-  border: 3px solid #39ff14;
-  box-shadow: 0 0 20px #39ff14, 0 0 40px #ff6a00;
-  border-radius: 10px;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-#character .carousel-inner img:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 30px #39ff14, 0 0 60px #ff6a00;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  filter: invert(1) drop-shadow(0 0 2px #39ff14);
-}
-
+/* Carousel Neon Effect */
 .carousel-neon {
-  max-height: 500px;
-  object-fit: cover;
+  max-height: 550px;       /* uniform height */
+  width: auto;             /* scale naturally */
+  object-fit: contain;     /* show full image, no cropping */
   border: 3px solid #39ff14;
   border-radius: 10px;
   box-shadow: 0 0 20px #39ff14, 0 0 40px #ff6a00;
@@ -550,42 +582,68 @@ footer {
 }
 
 @keyframes neonPulse {
-  0% { transform: scale(1); box-shadow: 0 0 20px #39ff14, 0 0 40px #ff6a00; }
-  50% { transform: scale(1.02); box-shadow: 0 0 35px #39ff14, 0 0 70px #ff6a00; }
+  0%   { transform: scale(1); box-shadow: 0 0 20px #39ff14, 0 0 40px #ff6a00; }
+  50%  { transform: scale(1.02); box-shadow: 0 0 35px #39ff14, 0 0 70px #ff6a00; }
   100% { transform: scale(1); box-shadow: 0 0 20px #39ff14, 0 0 40px #ff6a00; }
 }
 
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  filter: invert(1) drop-shadow(0 0 2px #39ff14);
+/* Buttons Glow */
+#prevSlide, #nextSlide {
+  flex-shrink: 0;
+  position: static !important;   /* 👈 this is the key — kills any inherited positioning */
+  top: unset !important;
+  transform: none !important;
+  font-size: 2.5rem;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background-color: rgba(0,0,0,0.8);
+  color: #39ff14;
+  border: 2px solid #39ff14;
+  box-shadow: 0 0 15px #39ff14, 0 0 30px #ff6a00;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-/* Make video responsive */
+#prevSlide:hover, #nextSlide:hover {
+  transform: scale(1.2) !important;
+  box-shadow: 0 0 30px #39ff14, 0 0 60px #ff6a00;
+}
+
+/* SerieZ Video Responsive */
 #serieVideoContainer video {
-  width: 100%;        /* fill container width */
-  height: auto;       /* maintain aspect ratio */
-  max-width: 800px;   /* optional max width */
+  width: 100%;
+  max-width: 800px;
+  height: auto;
   border-radius: 12px;
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
-}
-
-/* Video itself */
-.video-container video {
-  width: 100%;      /* fill container width */
-  height: auto;     /* maintain aspect ratio */
   display: block;
-  border-radius: 12px;
+  margin: 0 auto;
 }
 
-/* Anime Box Neon Hover */
+/* Anime Box Fixed Size */
 .anime-box {
-  position: relative;
+  width: 100%;
+  height: 220px; /* fixed height for all boxes */
   overflow: hidden;
   border: 2px solid #39ff14;
   border-radius: 12px;
+  position: relative;
   transition: all 0.3s ease;
 }
 
+/* GIF fills the box completely */
+.anime-box img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block;
+}
+
+/* Neon hover overlay */
 .anime-box::before {
   content: '';
   position: absolute;
@@ -599,6 +657,8 @@ footer {
   transition: opacity 0.3s ease;
   z-index: 2;
   animation: neonMove 5s linear infinite;
+  pointer-events: none;
+  border-radius: 12px;
 }
 
 .anime-box:hover::before {
@@ -611,22 +671,29 @@ footer {
   100% { background-position: 0% 0%; }
 }
 
-.anime-box img {
-  display: block;
-  width: 100%;
-  border-radius: 12px;
-  position: relative;
-  z-index: 1;
+@media (min-width: 768px) {
+  #series .anime-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
 }
 
-/* Netflix Button Neon Glow */
+/* Movies */
+#onePieceRedVideo {
+  
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Optional: Netflix-style button (if needed for links) */
 .btn-netflix {
-  background: #e50914; 
+  background: #e50914;
   color: #fff;
   font-weight: bold;
   display: inline-flex;
   align-items: center;
   gap: 5px;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
   transition: 0.3s;
   box-shadow: 0 0 5px #e50914;
 }
@@ -635,6 +702,12 @@ footer {
   box-shadow: 0 0 20px #39ff14, 0 0 40px #ff6a00;
   color: #39ff14;
   transform: scale(1.05);
+}
+
+/*MusicZ */
+#music .music-track-img {
+  max-height: 150px;
+  object-fit: cover;
 }
 
 /* Music Title Banner Slide */
@@ -708,4 +781,23 @@ footer {
   0% { transform: translateY(0px); }
   50% { transform: translateY(-15px); }
   100% { transform: translateY(0px); }
+}
+
+/* Footer */
+footer {
+  padding:20px;
+  text-align:center;
+  border-top:1px solid #39ff14;
+}
+.footer-tag {
+  color:#ff6a00;
+  text-shadow:0 0 15px #ff6a00;
+}
+
+#news img {
+  border: 2px solid #39ff14;       
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  width: 100%;
+  max-height: 550px;               
+  object-fit: cover;
 }

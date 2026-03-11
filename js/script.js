@@ -133,38 +133,55 @@ mobileDropdowns.forEach(btn => {
   });
 });
 
-  /* ---------------- Quote Toggle ---------------- */
-  const quote = document.getElementById("animeQuote");
-  if (quote) {
-    window.toggleQuote = function () {
-      quote.style.display = quote.style.display === "block" ? "none" : "block";
-    };
-  }
+/* ---------------- CharacterZ Slider ---------------- */
+const slider = document.getElementById('makiSlider');
+const slides = slider.children;
+let index = 0;
 
-  /* ---------------- SerieZ Autoplay Video ---------------- */
+function updateSlider() {
+  slider.style.transform = `translateX(-${index * slider.offsetWidth}px)`;
+}
+
+document.getElementById('nextSlide').addEventListener('click', () => {
+  index = (index + 1) % slides.length;
+  updateSlider();
+});
+
+document.getElementById('prevSlide').addEventListener('click', () => {
+  index = (index - 1 + slides.length) % slides.length;
+  updateSlider();
+});
+
+// Optional: auto-slide every 3 seconds
+setInterval(() => {
+  index = (index + 1) % slides.length;
+  updateSlider();
+}, 3000);
+
+/* ---------------- SerieZ Autoplay Video ---------------- */
   const bleachVideo = document.getElementById('bleachVideo');
-  const container = document.getElementById('serieVideoContainer');
-  if (bleachVideo && container) {
-    bleachVideo.muted = true;
+const container = document.getElementById('serieVideoContainer');
 
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          bleachVideo.play().catch(() => {});
-        } else {
-          bleachVideo.pause();
-        }
-      });
-    }, { threshold: 0.4 });
+if (bleachVideo && container) {
+  bleachVideo.muted = true;
 
-    observer.observe(container);
-
-    // Enable sound after first click anywhere
-    document.addEventListener('click', function enableSoundOnce() {
-      bleachVideo.muted = false;
-      document.removeEventListener('click', enableSoundOnce);
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        bleachVideo.play().catch(() => {});
+      } else {
+        bleachVideo.pause();
+      }
     });
-  }
+  }, { threshold: 0.4 });
+
+  observer.observe(container);
+
+  document.addEventListener('click', function enableSoundOnce() {
+    bleachVideo.muted = false;
+    document.removeEventListener('click', enableSoundOnce);
+  });
+}
 
   /* ---------------- MusicZ Player ---------------- */
   const musicTracks = document.querySelectorAll('.music-track');
@@ -195,3 +212,11 @@ mobileDropdowns.forEach(btn => {
   });
 
 }); 
+
+/* ---------------- Quote Toggle ---------------- */
+  const quote = document.getElementById("animeQuote");
+  if (quote) {
+    window.toggleQuote = function () {
+      quote.style.display = quote.style.display === "block" ? "none" : "block";
+    };
+  }
