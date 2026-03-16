@@ -220,3 +220,99 @@ if (bleachVideo && container) {
       quote.style.display = quote.style.display === "block" ? "none" : "block";
     };
   }
+
+/* ---------------- Feedback / Comments ---------------- */
+let selectedRating = 0;
+let currentPlatform = '';
+
+window.openModal = function(platform) {
+  currentPlatform = platform;
+  document.getElementById('loggedInAs').textContent = '✅ Logged in via ' + platform;
+  const modal = document.getElementById('feedbackModal');
+  modal.style.display = 'flex';
+}
+
+window.closeModal = function() {
+  document.getElementById('feedbackModal').style.display = 'none';
+  resetForm();
+}
+
+// Close modal when clicking outside
+document.getElementById('feedbackModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+window.submitFeedback = function() {
+  const name = document.getElementById('nameInput').value.trim();
+  const email = document.getElementById('emailInput').value.trim();
+  const message = document.getElementById('messageInput').value.trim();
+  const rating = document.getElementById('ratingInput').value;
+
+  if (!name || !email || !message || rating === '0') {
+    alert('Please fill in all fields and select a rating! 🥹');
+    return;
+  }
+
+  const commentsList = document.getElementById('commentsList');
+
+  // Remove "no comments" placeholder
+  const placeholder = commentsList.querySelector('p');
+  if (placeholder) placeholder.remove();
+
+  // Build stars
+  let stars = '';
+  for (let i = 1; i <= 5; i++) {
+    stars += i <= rating ? '★' : '☆';
+  }
+
+  // Create comment card
+  const card = document.createElement('div');
+  card.className = 'comment-card';
+  card.innerHTML = `
+    <div class="comment-header">
+      <span class="comment-name">${name}</span>
+      <span class="comment-platform">via ${currentPlatform}</span>
+    </div>
+    <div class="comment-stars">${stars}</div>
+    <p class="comment-message">${message}</p>
+  `;
+
+  commentsList.prepend(card);
+
+  // Reset form
+  resetForm();
+  closeModal();
+}
+
+function resetForm() {
+  document.getElementById('nameInput').value = '';
+  document.getElementById('emailInput').value = '';
+  document.getElementById('messageInput').value = '';
+  document.getElementById('ratingInput').value = '0';
+  selectedRating = 0;
+  document.querySelectorAll('.star').forEach(s => s.classList.remove('active'));
+}
+
+// Star rating interaction
+document.querySelectorAll('.star').forEach(star => {
+  star.addEventListener('click', function() {
+    selectedRating = parseInt(this.dataset.value);
+    document.getElementById('ratingInput').value = selectedRating;
+    document.querySelectorAll('.star').forEach(s => {
+      s.classList.toggle('active', parseInt(s.dataset.value) <= selectedRating);
+    });
+  });
+
+  star.addEventListener('mouseover', function() {
+    const val = parseInt(this.dataset.value);
+    document.querySelectorAll('.star').forEach(s => {
+      s.classList.toggle('active', parseInt(s.dataset.value) <= val);
+    });
+  });
+
+  star.addEventListener('mouseout', function() {
+    document.querySelectorAll('.star').forEach(s => {
+      s.classList.toggle('active', parseInt(s.dataset.value) <= selectedRating);
+    });
+  });
+});
