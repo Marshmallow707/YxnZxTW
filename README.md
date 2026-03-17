@@ -22,6 +22,14 @@ recreating and enhancing an existing web design into something more personal and
 
 ---
 
+## 🔄 Origins
+
+This project is a redesign of the original Bootstrap prototype.
+
+🔗 **Bootstrap Prototype → [YxnZx](https://github.com/Marshmallow707/YxnZx)**
+
+---
+
 ## ✨ Features
 
 - 🎌 Anime-themed sections: News, Series, Movies, Music & Quotes
@@ -42,14 +50,6 @@ recreating and enhancing an existing web design into something more personal and
 
 ---
 
-## 🔄 Origins
-
-This project is a redesign of the original Bootstrap prototype.
-
-🔗 **Bootstrap Prototype → [YxnZx](https://github.com/Marshmallow707/YxnZx)**
-
----
-
 ## 🎯 Course Project
 This project was created as a course requirement for **IT101 - JK01**.
-> *"Anything is Possible!"* — Keep Being Weird 🟢🟠
+> *"Anything is Possible!"* - Keep Being Weird 🟢🟠
