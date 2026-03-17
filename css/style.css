@@ -539,10 +539,15 @@ body:active .cursor-glow {
 }
 
 /* UpdateZ */
+#updates .social-card {
+  display: block;
+}
+
 #updates .social-card img {
   width: 100%;
-  max-height: 300px; 
-  object-fit: cover;
+  height: auto;              /* ← was 120px, now auto */
+  object-fit: contain;       /* ← was cover, now contain (no cropping) */
+  object-position: center;
   border: 2px solid #39ff14;
   transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
 }
@@ -564,9 +569,37 @@ body:active .cursor-glow {
   margin-top: 5px;
 }
 
+/* UpdateZ Grid responsive */
+#updates .social-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  padding: 16px;
+  max-width: 1300px;   /* ← limits the grid width */
+  margin: 0 auto;     /* ← keeps it centered */
+}
+
+@media (min-width: 768px) {
+  #updates .social-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+
+/* CharacterZ */
+#character .character-desc {
+  text-align: justify !important;
+  color: #2dba6e !important;
+  text-shadow: 0 0 6px #1a8c50;
+}
+
+#character .carousel-neon {
+  margin-top: 40px;   /* ← adds space above the carousel */
+}
+
 /* Carousel Neon Effect */
 .carousel-neon {
-  max-height: 550px;       /* uniform height */
+  max-height: 700px;        
   width: auto;             /* scale naturally */
   object-fit: contain;     /* show full image, no cropping */
   border: 3px solid #39ff14;
@@ -675,6 +708,24 @@ body:active .cursor-glow {
   #series .anime-grid {
     grid-template-columns: repeat(4, 1fr) !important;
   }
+}
+
+.anime-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.6);
+  color: #39ff14;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.75rem;
+  text-align: center !important;
+  padding: 6px 4px;
+  margin: 0;
+  z-index: 3;
+  word-break: break-word;    /* ← wraps long titles cleanly */
+  line-height: 1.4;          /* ← better spacing between wrapped lines */
+  letter-spacing: 0px;       /* ← removes letter spacing so it fits better */
 }
 
 /* Movies */
