@@ -44,6 +44,49 @@
   ☰
 </button>
 
+<!-- RIGHT SIDE SLIDING TAB -->
+
+<!-- The Arrow Tab (always visible on right edge) -->
+<div id="sideTabTrigger" onclick="toggleSidePanel()">
+  <span id="sideTabArrow">►</span>
+  <span id="sideTabLabel">MY WORKS</span>
+</div>
+
+<!-- The Sliding Panel -->
+<div id="sidePanel">
+  <div class="side-panel-inner">
+
+    <h3 class="side-panel-title">YxnZx's Works</h3>
+    <div class="side-panel-divider"></div>
+
+    <!-- Certificates Button -->
+    <a href="certificates.html" class="side-panel-btn btn-cert">
+      <span class="side-btn-icon">📜</span>
+      <div class="side-btn-text">
+        <span class="side-btn-label">CertificateZ</span>
+        <span class="side-btn-sub">View my achievements</span>
+      </div>
+      <span class="side-btn-arrow">→</span>
+    </a>
+
+    <!-- Portfolio Button -->
+    <a href="certificates.html#portfolio" class="side-panel-btn btn-portfolio">
+      <span class="side-btn-icon">🖥️</span>
+      <div class="side-btn-text">
+        <span class="side-btn-label">PortfolioZ</span>
+        <span class="side-btn-sub">View my projects</span>
+      </div>
+      <span class="side-btn-arrow">→</span>
+    </a>
+
+    <p class="side-panel-tagline">🟢🟠 Keep Being Weird</p>
+
+  </div>
+</div>
+
+<!-- Overlay (click outside to close) -->
+<div id="sidePanelOverlay" onclick="toggleSidePanel()"></div>
+
 
 <!-- NAVBAR -->
 <nav class="navbar fixed w-full z-50">
@@ -112,12 +155,6 @@
   </div>
 </section>
 
-<!-- Section Spacer -->
-<div class="section-spacer">
-  <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-</div>
-  
-
 <!-- ABOUT -->
 <section id="about">
 
@@ -146,59 +183,63 @@
 </section>
 
 <!-- Section Spacer -->
-<div class="section-spacer">
-  <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+<div class="neon-sweep">
+  <div class="section-spacer">
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
 </div>
 
 <!-- NEWZ -->
 <section id="news" class="container mx-auto py-5">
-  <h2 class="section-title" style="color: #ff6a00;">NewZ</h2>
-  <div class="section-divider"><span>◆ ◆ ◆</span></div>
-  <h4 class="text-yellow-500 text-center mb-6">
+  <h2 class="section-title reveal" style="color: #ff6a00;">NewZ</h2>
+  <div class="section-divider reveal"><span>◆ ◆ ◆</span></div>
+  <h4 class="text-yellow-500 text-center text-xl mb-6">
     YxnZx's Most Trusted Sites for Anime News and Updates
   </h4>
 
   <div class="flex flex-wrap justify-center gap-8">
 
     <!-- Anime Corner -->
-    <div class="news-card text-center">
-      <a href="https://animecorner.me/" target="_blank">
-        <img src="icons/animecorner.png" alt="Anime Corner">
-        <p class="mt-2">Latest from Anime Corner</p>
-      </a>
-    </div>
+<div class="news-card text-center reveal from-left" style="transition-delay: 0.05s;">
+  <a href="https://animecorner.me/" target="_blank">
+    <img src="icons/animecorner.png" alt="Anime Corner">
+    <p class="mt-2">Latest from Anime Corner</p>
+  </a>
+</div>
 
-    <!-- Crunchyroll News -->
-    <div class="news-card text-center">
-      <a href="https://www.crunchyroll.com/news/latest" target="_blank">
-        <img src="icons/crunch.png" alt="Crunchyroll News">
-        <p class="mt-2">Trending at Crunchyroll News</p>
-      </a>
-    </div>
+<!-- Crunchyroll News -->
+<div class="news-card text-center reveal" style="transition-delay: 0.2s;">
+  <a href="https://www.crunchyroll.com/news/latest" target="_blank">
+    <img src="icons/crunch.png" alt="Crunchyroll News">
+    <p class="mt-2">Trending at Crunchyroll News</p>
+  </a>
+</div>
 
-    <!-- Anime News Network -->
-    <div class="news-card text-center">
-      <a href="https://www.animenewsnetwork.com/" target="_blank">
-        <img src="icons/animenn.png" alt="Anime News Network">
-        <p class="mt-2">Updates from Anime News Network</p>
-      </a>
-    </div>
+<!-- Anime News Network -->
+<div class="news-card text-center reveal from-right" style="transition-delay: 0.35s;">
+  <a href="https://www.animenewsnetwork.com/" target="_blank">
+    <img src="icons/animenn.png" alt="Anime News Network">
+    <p class="mt-2">Updates from Anime News Network</p>
+  </a>
+</div>
 
   </div>
 </section>
 
 <!-- Section Spacer -->
-<div class="section-spacer">
-  <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+<div class="neon-sweep">
+  <div class="section-spacer">
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
 </div>
 
 <!-- UPDATEZ -->
 <section id="updates" class="container mx-auto py-8 text-center">
-  <h2 class="section-title" style="color: #bf5fff;">UpdateZ</h2>
-  <div class="section-divider"><span>◆ ◆ ◆</span></div>
+  <h2 class="section-title reveal" style="color: #bf5fff;">UpdateZ</h2>
+  <div class="section-divider reveal"><span>◆ ◆ ◆</span></div>
   <h4 class="text-yellow-500 mb-4 text-xl md:text-2xl">Say Hi to YxnZx? YES YOU CAN!</h4>
 
-  <p class="mb-4 max-w-xl mx-auto text-sm md:text-base">
+  <p class="mb-4 max-w-xl mx-auto text-sm md:text-base reveal">
     If ever this goes unresponsive or outdated, maybe I'm busy developing my HAKI, CHARKRA AND BANKAI or just simply breathing...<br>
     To check me out, here's my other social media profiles 🙂
   </p>
@@ -206,52 +247,54 @@
   <div class="social-grid"> 
 
     <!-- Facebook -->
-    <div class="text-center">
-      <a href="https://www.facebook.com/" target="_blank" class="social-card">
-        <img src="icons/fb.png" alt="Facebook" class="rounded shadow">
-        <p class="mt-2">Facebook</p>
-      </a>
-    </div>
+<div class="text-center reveal from-left" style="transition-delay: 0.05s;">
+  <a href="https://www.facebook.com/" target="_blank" class="social-card">
+    <img src="icons/fb.png" alt="Facebook" class="rounded shadow">
+    <p class="mt-2">Facebook</p>
+  </a>
+</div>
 
-    <!-- Instagram -->
-    <div class="text-center">
-      <a href="https://www.instagram.com/" target="_blank" class="social-card">
-        <img src="icons/garam.png" alt="Instagram" class="rounded shadow">
-        <p class="mt-2">Instagram</p>
-      </a>
-    </div>
+<!-- Instagram -->
+<div class="text-center reveal from-left" style="transition-delay: 0.2s;">
+  <a href="https://www.instagram.com/" target="_blank" class="social-card">
+    <img src="icons/garam.png" alt="Instagram" class="rounded shadow">
+    <p class="mt-2">Instagram</p>
+  </a>
+</div>
 
-    <!-- Discord -->
-    <div class="text-center">
-      <a href="https://discord.com/" target="_blank" class="social-card">
-        <img src="icons/dis.png" alt="Discord" class="rounded shadow">
-        <p class="mt-2">Discord</p>
-      </a>
-    </div>
+<!-- Discord -->
+<div class="text-center reveal from-right" style="transition-delay: 0.35s;">
+  <a href="https://discord.com/" target="_blank" class="social-card">
+    <img src="icons/dis.png" alt="Discord" class="rounded shadow">
+    <p class="mt-2">Discord</p>
+  </a>
+</div>
 
-    <!-- Reddit -->
-    <div class="text-center">
-      <a href="https://www.reddit.com/" target="_blank" class="social-card">
-        <img src="icons/redd.png" alt="Reddit" class="rounded shadow">
-        <p class="mt-2">Reddit</p>
-      </a>
-    </div>
+<!-- Reddit -->
+<div class="text-center reveal from-right" style="transition-delay: 0.5s;">
+  <a href="https://www.reddit.com/" target="_blank" class="social-card">
+    <img src="icons/redd.png" alt="Reddit" class="rounded shadow">
+    <p class="mt-2">Reddit</p>
+  </a>
+</div>
 
   </div>
 </section>
 
 <!-- Section Spacer -->
-<div class="section-spacer">
-  <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+<div class="neon-sweep">
+  <div class="section-spacer">
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
 </div>
 
 <!-- CHARACTERZ -->
 <section id="character" class="container mx-auto py-8 text-center relative z-10">
-  <h2 class="section-title" style="color: #39ff14;">CharacterZ</h2>
-  <div class="section-divider"><span>◆ ◆ ◆</span></div>
+  <h2 class="section-title reveal" style="color: #39ff14;">CharacterZ</h2>
+  <div class="section-divider reveal"><span>◆ ◆ ◆</span></div>
   <h4 class="text-yellow-500 text-xl md:text-2xl mb-4">YxnZx's Favorite Character of All Time</h4>
 
-  <p class="character-desc mx-auto" style="max-width:800px; line-height:1.8; padding-left: 48px; padding-right: 48px;">
+  <p class="character-desc mx-auto reveal" style="max-width:800px; line-height:1.8; padding-left: 48px; padding-right: 48px;">
     Maki Zenin (禪ぜん院いん真ま希き) is a major supporting character in <em>Jujutsu Kaisen</em> and one of the main protagonists of its prequel, <em>Jujutsu Kaisen 0: Jujutsu High</em>. 
     She is a second-year student at Tokyo Jujutsu High, the daughter of Ogi Zenin, and the elder twin sister of Mai Zenin. Born a non-sorcerer in one of the Big Three Families, Maki was constantly mistreated and eventually expelled herself from the clan. 
     Determined to become a powerful jujutsu sorcerer, she works closely with her friends Panda and Toge Inumaki while serving as a role model to first-year students.<br><br>
@@ -292,36 +335,38 @@
 </div>
 
 <!-- Section Spacer -->
-<div class="section-spacer">
-  <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+<div class="neon-sweep">
+  <div class="section-spacer">
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
 </div>
 
 <!-- SERIEZ -->
 <section id="series" class="container mx-auto py-8" style="padding-left: 48px; padding-right: 48px;">
   <!-- Main Header -->
-  <h2 class="section-title" style="color: #ff2d55;">SerieZ</h2>
-  <div class="section-divider"><span>◆ ◆ ◆</span></div>
-  <h4 class="text-yellow-500 text-center mb-6">YxnZx is currently Watching...</h4>
+  <h2 class="section-title reveal" style="color: #ff2d55;">SerieZ</h2>
+  <div class="section-divider reveal"><span>◆ ◆ ◆</span></div>
+  <h4 class="text-yellow-500 text-center text-xl mb-4">YxnZx is currently Watching...</h4>
 
   <!-- Currently Watching Video -->
-  <div id="serieVideoContainer" class="text-center mb-2">
+  <div id="serieVideoContainer" class="text-center mb-2 reveal">
     <video 
       id="bleachVideo" 
       loop muted autoplay playsinline controls 
-      class="rounded-xl shadow-lg w-full max-w-3xl mx-auto">
+      class="rounded-xl shadow-lg w-full max-w-3xl mx-auto reveal">
       <source src="videos/BLEACH_20th_Anime_Anniversary_Official_Trailer.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
-    <h4 class="mt-3 text-yellow-500 text-lg md:text-xl font-semibold">Bleach: Thousand-Year Blood War</h4>
+    <h4 class="mt-3 text-yellow-500 text-lg md:text-xl font-semibold reveal">Bleach: Thousand-Year Blood War</h4>
   </div>
 
   <!-- Already Watched (Featured Series) -->
-  <h3 style="color: #00cfff; font-family: 'Orbitron', sans-serif; font-size: 1.2rem; text-align: center; margin-bottom: 16px; letter-spacing: 2px; margin-top: 24px;">Already Watched (Featured Series)</h3>
+  <h3 style="color: #00cfff; font-family: 'Orbitron', sans-serif; font-size: 1.2rem; text-align: center; margin-bottom: 16px; letter-spacing: 2px; margin-top: 24px; " class="reveal">Already Watched (Featured Series)</h3>
   <div class="anime-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; padding: 0 16px;">
 
 <!-- Anime Box 1 -->
 <div>
-  <div class="anime-box">
+  <div class="anime-box reveal from-left" style="transition-delay: 0.05s;">
     <img src="gifs/mha.gif" alt="My Hero Academia">
     <p class="anime-label">My Hero Academia</p>
   </div>
@@ -329,7 +374,7 @@
 
 <!-- Anime Box 2 -->
 <div>
-  <div class="anime-box">
+  <div class="anime-box reveal from-right" style="transition-delay: 0.2s;">
     <img src="gifs/herox.gif" alt="To Be Hero X">
     <p class="anime-label">To Be Hero X</p>
   </div>
@@ -337,7 +382,7 @@
 
 <!-- Anime Box 3 -->
 <div>
-  <div class="anime-box">
+  <div class="anime-box reveal from-left" style="transition-delay: 0.35s;">
     <img src="gifs/gachia.gif" alt="Gachiakuta">
     <p class="anime-label">Gachiakuta</p>
   </div>
@@ -345,7 +390,7 @@
 
 <!-- Anime Box 4 -->
 <div>
-  <div class="anime-box">
+  <div class="anime-box reveal from-right" style="transition-delay: 0.5s;">
     <img src="gifs/punsks.gif" alt="Cyberpunk: Edgerunners">
     <p class="anime-label">Cyberpunk: Edgerunners</p>
   </div>
@@ -356,24 +401,26 @@
 </section>
 
 <!-- Section Spacer -->
-<div class="section-spacer">
-  <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+<div class="neon-sweep">
+  <div class="section-spacer">
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
 </div>
 
 <!-- MOVIEZ -->
 <section id="movies" class="container mx-auto py-8">
-  <h2 class="section-title" style="color: #ff6a00;">MovieZ</h2>
-  <div class="section-divider"><span>◆ ◆ ◆</span></div>
-  <h4 class="text-yellow-500 text-center" style="margin-bottom: 32px;">YxnZx's Featured Movie of the Week</h4>
+  <h2 class="section-title reveal" style="color: #ff6a00;">MovieZ</h2>
+  <div class="section-divider reveal"><span>◆ ◆ ◆</span></div>
+  <h4 class="text-yellow-500 text-center text-xl" style="margin-bottom: 32px;">YxnZx's Featured Movie of the Week</h4>
 
   <div style="display:flex; flex-wrap:wrap; gap:24px; max-width:1100px; margin:0 auto; align-items:flex-start; padding:0 16px;">
 
     <!-- Video Clip -->
     <div style="flex:1; min-width:280px; text-align:center;">
-      <video id="onePieceRedVideo" class="rounded shadow" controls poster="images/opred.jpg">
+      <video id="onePieceRedVideo" class="rounded shadow reveal" controls poster="images/opred.jpg">
         <source src="videos/ONE_PIECE_FILM_RED.mp4" type="video/mp4">
       </video>
-      <p class="mt-2 text-sm"><strong>One Piece Film: Red</strong></p>
+      <p class="mt-2 text-sm reveal"><strong>One Piece Film: Red</strong></p>
       <p style="font-size:0.8rem; color:#aaa;">Click to play the video above</p>
       <a href="https://www.netflix.com/ph-en/title/81700392" target="_blank"
         style="display:inline-flex; align-items:center; gap:6px; margin-top:8px; padding:6px 14px; background:#e50914; border-radius:6px; color:#fff; font-size:0.85rem; font-weight:600;">
@@ -384,8 +431,8 @@
 
     <!-- Movie Synopsis -->
     <div style="flex:1; min-width:280px;">
-      <img src="images/opred2.jpg" class="w-full rounded shadow mb-2" alt="One Piece Red Poster">
-      <p style="font-size:0.85rem; line-height:1.6; color:#e5e5e5;">
+      <img src="images/opred2.jpg" class="w-full rounded shadow mb-2 reveal" alt="One Piece Red Poster">
+      <p style="font-size:0.85rem; line-height:1.6; color:#e5e5e5;" class ="reveal">
         <strong>Synopsis:</strong> One Piece Film: Red follows the adventures of Luffy and the Straw Hat Pirates as they face new enemies and uncover secrets about Shanks' past. 
         This high-energy feature combines breathtaking battles, heartfelt moments, and iconic characters in a story that will thrill both longtime fans and newcomers alike.
       </p>
@@ -395,87 +442,91 @@
 </section>
 
 <!-- Section Spacer -->
-<div class="section-spacer">
-  <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+<div class="neon-sweep">
+  <div class="section-spacer">
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
 </div>
 
 <!-- MUSICZ -->
 <section id="music" class="container mx-auto py-5" style="padding-left: 48px; padding-right: 48px;">
-  <h2 class="section-title" style="color: #bf5fff;">MusicZ</h2>
-  <div class="section-divider"><span>◆ ◆ ◆</span></div>
-  <h4 class="text-yellow-500 text-center" style="margin-bottom: 32px;">YxnZx's Featured Music of the Week</h4>
+  <h2 class="section-title reveal" style="color: #bf5fff;">MusicZ</h2>
+  <div class="section-divider reveal"><span>◆ ◆ ◆</span></div>
+  <h4 class="text-yellow-500 text-center text-xl" style="margin-bottom: 32px;">YxnZx's Featured Music of the Week</h4>
 
   <div class="flex flex-wrap -mx-2">
 
     <!-- Main Music Player -->
-    <div class="md:w-4/12 px-2 text-center" style="margin-bottom: 16px;">
-      <img src="images/aizo.jpg" class="w-full rounded shadow" style="margin-bottom: 16px;" alt="Main Track Cover">
+<div class="md:w-4/12 px-2 text-center reveal from-left" style="margin-bottom: 16px; transition-delay: 0.05s;">
+  <img src="images/aizo.jpg" class="w-full rounded shadow" style="margin-bottom: 16px;" alt="Main Track Cover">
+  <audio controls class="w-full music-track">
+    <source src="audios/AIZO.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+  <div class="music-title mt-2">
+    <span>King Gnu - AIZO</span>
+  </div>
+</div>
+
+<!-- Other Tracks -->
+<div class="md:w-8/12 px-2">
+  <div class="flex flex-wrap -mx-2">
+
+    <!-- Track 1 -->
+    <div class="w-6/12 md:w-3/12 px-2 text-center reveal" style="margin-bottom: 12px; transition-delay: 0.2s;">
+      <img src="images/iris.png" class="w-full rounded shadow" style="margin-bottom: 12px;" alt="Track 1 Cover">
       <audio controls class="w-full music-track">
-        <source src="audios/AIZO.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
+        <source src="audios/IRIS_OUT.mp3" type="audio/mp3">
       </audio>
-      <div class="music-title mt-2">
-        <span>King Gnu - AIZO</span>
+      <div class="music-title mt-1">
+        <span>Kenshi Yonezu - IRIS OUT</span>
       </div>
     </div>
 
-    <!-- Other Tracks -->
-    <div class="md:w-8/12 px-2">
-      <div class="flex flex-wrap -mx-2">
-
-        <!-- Track 1 -->
-        <div class="w-6/12 md:w-3/12 px-2 text-center" style="margin-bottom: 12px;">
-          <img src="images/iris.png" class="w-full rounded shadow" style="margin-bottom: 12px;" alt="Track 1 Cover">
-          <audio controls class="w-full music-track">
-            <source src="audios/IRIS_OUT.mp3" type="audio/mp3">
-          </audio>
-          <div class="music-title mt-1">
-            <span>Kenshi Yonezu - IRIS OUT</span>
-          </div>
-        </div>
-
-        <!-- Track 2 -->
-        <div class="w-6/12 md:w-3/12 px-2 text-center" style="margin-bottom: 12px;">
-          <img src="images/onda.jpg" class="w-full rounded shadow" style="margin-bottom: 12px;" alt="Track 2 Cover">
-          <audio controls class="w-full music-track">
-            <source src="audios/On_the_Way.mp3" type="audio/mp3">
-          </audio>
-          <div class="music-title mt-1">
-            <span>革命道中 - On The Way</span>
-          </div>
-        </div>
-
-        <!-- Track 3 -->
-        <div class="w-6/12 md:w-3/12 px-2 text-center" style="margin-bottom: 12px;">
-          <img src="images/mhaend.jpg" class="w-full rounded shadow" style="margin-bottom: 12px;" alt="Track 3 Cover">
-          <audio controls class="w-full music-track">
-            <source src="audios/MHAED_I.mp3" type="audio/mp3">
-          </audio>
-          <div class="music-title mt-1">
-            <span>BUMP OF CHICKEN - I</span>
-          </div>
-        </div>
-
-        <!-- Track 4 -->
-        <div class="w-6/12 md:w-3/12 px-2 text-center" style="margin-bottom: 12px;">
-          <img src="images/kekka.png" class="w-full rounded shadow" style="margin-bottom: 12px;" alt="Track 4 Cover">
-          <audio controls class="w-full music-track">
-            <source src="audios/Kekka.mp3" type="audio/mp3">
-          </audio>
-          <div class="music-title mt-1">
-            <span>Kocchi no Kento - けっかおーらい</span>
-          </div>
-        </div>
-
+    <!-- Track 2 -->
+    <div class="w-6/12 md:w-3/12 px-2 text-center reveal" style="margin-bottom: 12px; transition-delay: 0.35s;">
+      <img src="images/onda.jpg" class="w-full rounded shadow" style="margin-bottom: 12px;" alt="Track 2 Cover">
+      <audio controls class="w-full music-track">
+        <source src="audios/On_the_Way.mp3" type="audio/mp3">
+      </audio>
+      <div class="music-title mt-1">
+        <span>革命道中 - On The Way</span>
       </div>
     </div>
+
+    <!-- Track 3 -->
+    <div class="w-6/12 md:w-3/12 px-2 text-center reveal" style="margin-bottom: 12px; transition-delay: 0.5s;">
+      <img src="images/mhaend.jpg" class="w-full rounded shadow" style="margin-bottom: 12px;" alt="Track 3 Cover">
+      <audio controls class="w-full music-track">
+        <source src="audios/MHAED_I.mp3" type="audio/mp3">
+      </audio>
+      <div class="music-title mt-1">
+        <span>BUMP OF CHICKEN - I</span>
+      </div>
+    </div>
+
+    <!-- Track 4 -->
+    <div class="w-6/12 md:w-3/12 px-2 text-center reveal" style="margin-bottom: 12px; transition-delay: 0.65s;">
+      <img src="images/kekka.png" class="w-full rounded shadow" style="margin-bottom: 12px;" alt="Track 4 Cover">
+      <audio controls class="w-full music-track">
+        <source src="audios/Kekka.mp3" type="audio/mp3">
+      </audio>
+      <div class="music-title mt-1">
+        <span>Kocchi no Kento - けっかおーらい</span>
+      </div>
+    </div>
+
+  </div>
+</div>
 
   </div>
 </section>
 
 <!-- Section Spacer -->
-<div class="section-spacer">
-  <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+<div class="neon-sweep">
+  <div class="section-spacer">
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
 </div>
 
 <!-- QUOTE SECTION -->
@@ -494,10 +545,10 @@
   "></div>
 
   <!-- Header -->
-  <h2 class="section-title" style="color: #ffffff; text-shadow: 0 0 20px #ff6a00, 0 0 40px #39ff14;">QuoteZ</h2>
-  <div class="section-divider"><span>◆ ◆ ◆</span></div>
+  <h2 class="section-title reveal" style="color: #ffffff; text-shadow: 0 0 20px #ff6a00, 0 0 40px #39ff14;">QuoteZ</h2>
+  <div class="section-divider reveal"><span>◆ ◆ ◆</span></div>
 
- <h4 class="text-center mb-4" style="color: #ffffff; text-shadow: 0 0 10px #3b82f6, 0 0 20px #3b82f6, 0 0 40px #3b82f6;">YxnZx's Featured Quotes at the Moment</h4>
+ <h4 class="text-center text-xl mb-4" style="color: #ffffff; text-shadow: 0 0 10px #3b82f6, 0 0 20px #3b82f6, 0 0 40px #3b82f6;">YxnZx's Featured Quotes at the Moment</h4>
 
   <!-- Floating Quote -->
   <div class="quote-box mx-auto" style="
@@ -532,15 +583,17 @@
 </section>
 
 <!-- Section Spacer -->
-<div class="section-spacer">
-  <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+<div class="neon-sweep">
+  <div class="section-spacer">
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
 </div>
 
 <!-- FEEDBACK SECTION -->
 <section id="cool" class="container mx-auto py-8 mb-16">
-  <h2 class="section-title" style="color: #00cfff;">Cool StuffZ</h2>
-  <div class="section-divider"><span>◆ ◆ ◆</span></div>
-  <h4 class="text-center text-yellow-500" style="margin-bottom: 32px;">Leave a Comment, Feedback, and Suggestions my fellow Otaku! 🔥</h4>
+  <h2 class="section-title reveal" style="color: #00cfff;">Cool StuffZ</h2>
+  <div class="section-divider reveal"><span>◆ ◆ ◆</span></div>
+  <h4 class="text-center text-yellow-500 text-xl" style="margin-bottom: 32px;">Leave a Comment, Feedback, and Suggestions my fellow Otaku! 🔥</h4>
 
   <div class="feedback-wrapper">
 
@@ -626,11 +679,6 @@
     </div>
 
   </div>
-</div>
-
-<!-- Section Spacer -->
-<div class="section-spacer">
-  <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
 </div>
 
 <!-- FOOTER -->

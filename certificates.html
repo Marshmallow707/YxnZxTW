@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>YxnZx | Certificates & Portfolio</title>
+
+  <style>
+    /* ── LOCALIZED FONTS ── */
+    @font-face {
+      font-family: 'Orbitron';
+      src: url('fonts/Orbitron-Bold.ttf') format('truetype');
+      font-weight: 700;
+    }
+    @font-face {
+      font-family: 'Orbitron';
+      src: url('fonts/Orbitron-Regular.ttf') format('truetype');
+      font-weight: 400;
+    }
+    @font-face {
+      font-family: 'ShareTechMono';
+      src: url('fonts/ShareTechMono-Regular.ttf') format('truetype');
+      font-weight: 400;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --neon-green: #39ff14;
+      --neon-orange: #ff6a00;
+      --neon-blue: #00cfff;
+      --neon-purple: #bf5fff;
+      --bg: #000;
+    }
+
+    body {
+      background: var(--bg);
+      color: #fff;
+      font-family: 'Orbitron', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 15% 25%, rgba(57,255,20,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 85% 75%, rgba(255,106,0,0.06) 0%, transparent 50%);
+      z-index: -1;
+      animation: bgPulse 8s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    @keyframes bgPulse {
+      0% { opacity: 0.6; }
+      100% { opacity: 1; }
+    }
+
+    /* ── SCROLL PROGRESS ── */
+    #progressBar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 4px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--neon-green), var(--neon-orange));
+      z-index: 9999;
+      box-shadow: 0 0 8px var(--neon-green);
+    }
+
+    /* ── NEON CURSOR ── */
+    #cursorGlow {
+      width: 15px; height: 15px;
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      background: var(--neon-green);
+      box-shadow: 0 0 20px var(--neon-green), 0 0 40px var(--neon-orange);
+      transform: translate(-50%, -50%);
+      z-index: 99998;
+      opacity: 1;
+    }
+
+    /* ── BACK BUTTON ── */
+    .back-btn {
+      position: fixed;
+      top: 20px; left: 20px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: rgba(0,0,0,0.7);
+      border: 2px solid var(--neon-green);
+      border-radius: 30px;
+      color: var(--neon-green);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 2px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 15px rgba(57,255,20,0.3);
+      transition: all 0.3s ease;
+    }
+    .back-btn:hover {
+      background: var(--neon-green);
+      color: #000;
+      box-shadow: 0 0 30px var(--neon-green);
+      transform: translateX(-4px);
+    }
+
+    /* ── HERO ── */
+    .page-hero {
+      padding: 100px 20px 60px;
+      text-align: center;
+      background: linear-gradient(-45deg, #000, #001a00, #000, #001f1f);
+      background-size: 400% 400%;
+      animation: gradientMove 12s ease infinite;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .page-hero::after {
+      content: 'YxnZx';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(5rem, 20vw, 14rem);
+      font-weight: 700;
+      color: rgba(57,255,20,0.04);
+      letter-spacing: 20px;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .page-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2rem, 6vw, 4.5rem);
+      font-weight: 700;
+      color: var(--neon-green);
+      letter-spacing: 8px;
+      text-transform: uppercase;
+      text-shadow: 0 0 20px var(--neon-green), 0 0 40px var(--neon-green);
+      animation: pulseLogo 2s infinite alternate;
+      position: relative; z-index: 1;
+    }
+
+    @keyframes pulseLogo {
+      0% { text-shadow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green); }
+      100% { text-shadow: 0 0 20px var(--neon-green), 0 0 50px var(--neon-green), 0 0 80px #00ff99; }
+    }
+
+    .page-subtitle {
+      font-family: 'ShareTechMono', monospace;
+      color: var(--neon-blue);
+      font-size: 0.95rem;
+      margin-top: 12px;
+      letter-spacing: 3px;
+      text-shadow: 0 0 10px var(--neon-blue);
+      position: relative; z-index: 1;
+    }
+
+    /* ── SECTION DIVIDER ── */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 40px auto;
+      max-width: 800px;
+      padding: 0 20px;
+    }
+    .section-divider::before,
+    .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--neon-green), var(--neon-orange), transparent);
+      box-shadow: 0 0 8px var(--neon-green);
+    }
+    .section-divider span {
+      color: var(--neon-orange);
+      font-size: 1.2rem;
+      text-shadow: 0 0 10px var(--neon-orange);
+      letter-spacing: 4px;
+    }
+
+    /* ── NEON SWEEP DIVIDER between sections ── */
+    .neon-sweep {
+      position: relative;
+      height: 60px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .neon-sweep::before {
+      content: '';
+      position: absolute;
+      left: -100%;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--neon-green), var(--neon-orange), var(--neon-purple), transparent);
+      box-shadow: 0 0 20px var(--neon-green), 0 0 40px var(--neon-orange);
+      animation: sweepLine 3s ease-in-out infinite;
+    }
+
+    @keyframes sweepLine {
+      0%   { left: -100%; opacity: 0; }
+      20%  { opacity: 1; }
+      80%  { opacity: 1; }
+      100% { left: 100%; opacity: 0; }
+    }
+
+    .neon-sweep-dots {
+      display: flex;
+      gap: 10px;
+      z-index: 1;
+    }
+
+    .neon-sweep-dots span {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .neon-sweep-dots span:nth-child(1) { background:#39ff14; box-shadow:0 0 10px #39ff14; animation:dotPulse 1.5s infinite 0s; }
+    .neon-sweep-dots span:nth-child(2) { background:#ff6a00; box-shadow:0 0 10px #ff6a00; animation:dotPulse 1.5s infinite 0.2s; }
+    .neon-sweep-dots span:nth-child(3) { background:#00cfff; box-shadow:0 0 10px #00cfff; animation:dotPulse 1.5s infinite 0.4s; }
+    .neon-sweep-dots span:nth-child(4) { background:#39ff14; box-shadow:0 0 10px #39ff14; animation:dotPulse 1.5s infinite 0.6s; }
+    .neon-sweep-dots span:nth-child(5) { background:#ff6a00; box-shadow:0 0 10px #ff6a00; animation:dotPulse 1.5s infinite 0.8s; }
+    .neon-sweep-dots span:nth-child(6) { background:#00cfff; box-shadow:0 0 10px #00cfff; animation:dotPulse 1.5s infinite 1.0s; }
+    .neon-sweep-dots span:nth-child(7) { background:#bf5fff; box-shadow:0 0 10px #bf5fff; animation:dotPulse 1.5s infinite 1.2s; }
+
+    @keyframes dotPulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.8); opacity: 1; }
+    }
+
+    /* ── SECTION TITLES ── */
+    .section-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 700;
+      text-align: center;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .section-subtitle {
+      font-family: 'ShareTechMono', monospace;
+      text-align: center;
+      color: #aaa;
+      font-size: 0.85rem;
+      margin-bottom: 40px;
+      letter-spacing: 2px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ── SCROLL REVEAL ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.from-left  { transform: translateX(-60px); }
+    .reveal.from-right { transform: translateX(60px); }
+    .reveal.active     { opacity: 1; transform: translate(0,0); }
+
+    .reveal-stagger:nth-child(1) { transition-delay: 0.05s; }
+    .reveal-stagger:nth-child(2) { transition-delay: 0.15s; }
+    .reveal-stagger:nth-child(3) { transition-delay: 0.25s; }
+    .reveal-stagger:nth-child(4) { transition-delay: 0.35s; }
+    .reveal-stagger:nth-child(5) { transition-delay: 0.45s; }
+    .reveal-stagger:nth-child(6) { transition-delay: 0.55s; }
+
+    /* ── CERTIFICATES SECTION ── */
+    #certificates { padding: 60px 0; }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+      padding: 0 20px;
+    }
+
+    .cert-card {
+      position: relative;
+      background: rgba(0,0,0,0.6);
+      border: 2px solid var(--neon-green);
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(57,255,20,0.15);
+    }
+
+    .cert-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: var(--neon-orange);
+      box-shadow: 0 0 25px rgba(57,255,20,0.4), 0 0 50px rgba(255,106,0,0.2);
+    }
+
+    /* ── YxnZx WATERMARK inside each cert card ── */
+    .cert-card::after {
+      content: 'YxnZx';
+      position: absolute;
+      bottom: 8px;
+      right: 10px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: rgba(57,255,20,0.07);
+      letter-spacing: 4px;
+      pointer-events: none;
+      z-index: 1;
+      transition: color 0.3s ease;
+    }
+
+    .cert-card:hover::after {
+      color: rgba(255,106,0,0.1);
+    }
+
+    .cert-img-wrap {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .cert-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .cert-card:hover .cert-img-wrap img {
+      transform: scale(1.08);
+    }
+
+    .cert-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: linear-gradient(135deg, #001500, #001a08, #000d00);
+      color: rgba(57,255,20,0.3);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+    }
+
+    .cert-placeholder-icon { font-size: 3rem; opacity: 0.4; }
+
+    .cert-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s ease;
+      z-index: 2;
+    }
+
+    .cert-card:hover .cert-overlay { background: rgba(0,0,0,0.45); }
+
+    .cert-zoom-icon {
+      opacity: 0;
+      font-size: 2rem;
+      color: var(--neon-green);
+      text-shadow: 0 0 20px var(--neon-green);
+      transform: scale(0.5);
+      transition: all 0.3s ease;
+    }
+
+    .cert-card:hover .cert-zoom-icon { opacity: 1; transform: scale(1); }
+
+    .cert-info {
+      padding: 16px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cert-title  { font-family: 'Orbitron', sans-serif; font-size: 0.8rem; font-weight: 700; color: var(--neon-green); letter-spacing: 1px; margin-bottom: 6px; }
+    .cert-issuer { font-family: 'ShareTechMono', monospace; font-size: 0.75rem; color: var(--neon-blue); letter-spacing: 1px; }
+    .cert-date   { font-family: 'ShareTechMono', monospace; font-size: 0.7rem; color: #666; margin-top: 4px; }
+
+    /* ── PORTFOLIO SECTION — FEATURED SPOTLIGHT ── */
+    #portfolio { padding: 60px 0 80px; }
+
+    .portfolio-spotlight {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+    }
+
+    .portfolio-spotlight::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%; height: 80%;
+      background: radial-gradient(ellipse, rgba(191,95,255,0.15) 0%, transparent 70%);
+      pointer-events: none;
+      animation: spotlightPulse 3s ease-in-out infinite alternate;
+      z-index: 0;
+    }
+
+    @keyframes spotlightPulse {
+      0%   { opacity: 0.5; transform: translate(-50%,-50%) scale(0.9); }
+      100% { opacity: 1;   transform: translate(-50%,-50%) scale(1.1); }
+    }
+
+    .featured-portfolio-card {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 2px solid var(--neon-purple);
+      box-shadow: 0 0 30px rgba(191,95,255,0.3), 0 0 60px rgba(191,95,255,0.1), inset 0 0 30px rgba(191,95,255,0.05);
+      transition: all 0.4s ease;
+      z-index: 1;
+    }
+
+    .featured-portfolio-card:hover {
+      transform: translateY(-10px) scale(1.01);
+      border-color: var(--neon-orange);
+      box-shadow: 0 0 50px rgba(191,95,255,0.5), 0 0 100px rgba(255,106,0,0.2);
+    }
+
+    /* YxnZx watermark inside featured card too */
+    .featured-portfolio-card::after {
+      content: 'YxnZx';
+      position: absolute;
+      bottom: 20px; right: 24px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: rgba(191,95,255,0.07);
+      letter-spacing: 6px;
+      pointer-events: none;
+      z-index: 1;
+      transition: color 0.3s;
+    }
+
+    .featured-portfolio-card:hover::after {
+      color: rgba(255,106,0,0.09);
+    }
+
+    .featured-badge {
+      position: absolute;
+      top: 20px; left: 20px;
+      z-index: 10;
+      background: linear-gradient(135deg, var(--neon-purple), var(--neon-orange));
+      color: #fff;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 50px;
+      letter-spacing: 3px;
+      box-shadow: 0 0 20px rgba(191,95,255,0.6);
+      animation: badgePulse 2s infinite alternate;
+    }
+
+    @keyframes badgePulse {
+      0%   { box-shadow: 0 0 10px rgba(191,95,255,0.4); }
+      100% { box-shadow: 0 0 25px rgba(191,95,255,0.8), 0 0 40px rgba(255,106,0,0.3); }
+    }
+
+    .featured-img-wrap {
+      position: relative;
+      width: 100%;
+      height: 320px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0d0018, #0a0a1a, #001020);
+    }
+
+    .featured-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .featured-portfolio-card:hover .featured-img-wrap img {
+      transform: scale(1.05);
+    }
+
+    .featured-placeholder {
+      width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .featured-placeholder-icon {
+      font-size: 5rem;
+      filter: drop-shadow(0 0 20px var(--neon-purple));
+      animation: iconFloat 3s ease-in-out infinite;
+    }
+
+    @keyframes iconFloat {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-10px); }
+    }
+
+    .featured-placeholder span {
+      font-family: 'ShareTechMono', monospace;
+      font-size: 0.8rem;
+      color: rgba(191,95,255,0.4);
+      letter-spacing: 3px;
+    }
+
+    .featured-img-wrap::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(105deg, transparent 40%, rgba(191,95,255,0.08) 50%, transparent 60%);
+      background-size: 200% 200%;
+      animation: shimmerMove 4s linear infinite;
+    }
+
+    @keyframes shimmerMove {
+      0%   { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    .featured-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.4s ease;
+      z-index: 3;
+    }
+
+    .featured-portfolio-card:hover .featured-overlay {
+      background: rgba(0,0,0,0.5);
+    }
+
+    .featured-preview-btn {
+      opacity: 0;
+      padding: 14px 36px;
+      background: var(--neon-purple);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      cursor: pointer;
+      transform: translateY(20px);
+      transition: all 0.35s ease;
+      box-shadow: 0 0 30px rgba(191,95,255,0.6);
+    }
+
+    .featured-portfolio-card:hover .featured-preview-btn {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .featured-preview-btn:hover {
+      background: var(--neon-orange) !important;
+      box-shadow: 0 0 40px var(--neon-orange) !important;
+      transform: scale(1.05) !important;
+    }
+
+    .featured-info {
+      padding: 28px 32px;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
+      position: relative; z-index: 2;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .featured-info-left { flex: 1; min-width: 200px; }
+
+    .featured-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--neon-purple);
+      letter-spacing: 3px;
+      margin-bottom: 8px;
+      text-shadow: 0 0 15px rgba(191,95,255,0.5);
+    }
+
+    .featured-desc {
+      font-family: 'ShareTechMono', monospace;
+      font-size: 0.82rem;
+      color: #aaa;
+      line-height: 1.7;
+    }
+
+    .featured-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+
+    .tag { padding: 4px 12px; border-radius: 20px; font-family: 'ShareTechMono', monospace; font-size: 0.65rem; border: 1px solid; letter-spacing: 1px; }
+    .tag-green  { color: var(--neon-green);  border-color: var(--neon-green);  }
+    .tag-blue   { color: var(--neon-blue);   border-color: var(--neon-blue);   }
+    .tag-orange { color: var(--neon-orange); border-color: var(--neon-orange); }
+    .tag-purple { color: var(--neon-purple); border-color: var(--neon-purple); }
+
+    .featured-info-right { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+
+    .featured-stat-label { font-family: 'ShareTechMono', monospace; font-size: 0.65rem; color: #555; letter-spacing: 2px; }
+    .featured-stat-value { font-family: 'Orbitron', sans-serif; font-size: 0.85rem; font-weight: 700; color: var(--neon-purple); }
+
+    /* ── CERTIFICATE LIGHTBOX ── */
+    #certLightbox {
+      display: none;
+      position: fixed; inset: 0;
+      z-index: 99999;
+      background: rgba(0,0,0,0.92);
+      backdrop-filter: blur(10px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    #certLightbox.active { display: flex; }
+
+    .lightbox-content { position: relative; max-width: 900px; width: 100%; animation: popIn 0.3s ease; }
+
+    @keyframes popIn {
+      0%   { transform: scale(0.85); opacity: 0; }
+      100% { transform: scale(1);    opacity: 1; }
+    }
+
+    .lightbox-img { width: 100%; border-radius: 12px; border: 2px solid var(--neon-green); box-shadow: 0 0 40px rgba(57,255,20,0.3); object-fit: contain; max-height: 80vh; }
+
+    .lightbox-close {
+      position: absolute;
+      top: -16px; right: -16px;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--neon-orange);
+      border: none; color: #fff;
+      font-size: 1.2rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 15px var(--neon-orange);
+      transition: transform 0.2s;
+      font-family: 'Orbitron', sans-serif;
+    }
+    .lightbox-close:hover { transform: scale(1.2); }
+
+    .lightbox-caption { text-align: center; margin-top: 16px; font-family: 'Orbitron', sans-serif; font-size: 0.85rem; color: var(--neon-green); letter-spacing: 2px; }
+
+    /* ── PORTFOLIO PREVIEW MODAL ── */
+    #portfolioModal {
+      display: none;
+      position: fixed; inset: 0;
+      z-index: 99999;
+      background: rgba(0,0,0,0.92);
+      backdrop-filter: blur(10px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    #portfolioModal.active { display: flex; }
+
+    .modal-box {
+      position: relative;
+      max-width: 620px; width: 100%;
+      background: rgba(0,0,0,0.85);
+      border: 2px solid var(--neon-purple);
+      border-radius: 20px;
+      padding: 36px;
+      box-shadow: 0 0 50px rgba(191,95,255,0.3);
+      animation: popIn 0.3s ease;
+    }
+
+    .modal-close { position: absolute; top: 16px; right: 16px; background: transparent; border: none; color: var(--neon-orange); font-size: 1.4rem; cursor: pointer; font-family: 'Orbitron', sans-serif; transition: transform 0.2s; }
+    .modal-close:hover { transform: scale(1.2); }
+
+    .modal-preview-img { width: 100%; border-radius: 10px; border: 2px solid var(--neon-purple); margin-bottom: 20px; box-shadow: 0 0 20px rgba(191,95,255,0.3); object-fit: cover; max-height: 250px; }
+    .modal-title { font-family: 'Orbitron', sans-serif; font-size: 1rem; font-weight: 700; color: var(--neon-purple); letter-spacing: 2px; margin-bottom: 10px; }
+    .modal-desc  { font-family: 'ShareTechMono', monospace; font-size: 0.85rem; color: #ccc; line-height: 1.7; margin-bottom: 24px; }
+
+    .modal-link { display: inline-flex; align-items: center; gap: 8px; padding: 12px 30px; background: var(--neon-purple); color: #fff; border-radius: 30px; font-family: 'Orbitron', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-decoration: none; box-shadow: 0 0 20px rgba(191,95,255,0.5); transition: all 0.3s ease; }
+    .modal-link:hover { background: var(--neon-orange); box-shadow: 0 0 30px var(--neon-orange); transform: scale(1.05); }
+
+    /* ── FOOTER ── */
+    footer { padding: 30px 20px; text-align: center; border-top: 1px solid rgba(57,255,20,0.3); margin-top: 40px; }
+    .footer-tag { color: var(--neon-orange); font-family: 'Orbitron', sans-serif; font-size: 0.9rem; text-shadow: 0 0 15px var(--neon-orange); font-weight: 700; letter-spacing: 3px;}
+    footer p.sub { color: #aaa; font-family: 'ShareTechMono', monospace; font-size: 0.75rem; margin-top: 8px; }
+  </style>
+</head>
+<body>
+
+<div id="cursorGlow"></div>
+<div id="progressBar"></div>
+<a href="index.html" class="back-btn">◄ BACK</a>
+
+<!-- ── HERO ── -->
+<div class="page-hero">
+  <h1 class="page-title">Certificates & Portfolio</h1>
+  <p class="page-subtitle">YxnZx's Achievements & Works</p>
+</div>
+
+<!-- Neon Sweep Divider -->
+<div class="neon-sweep">
+  <div class="neon-sweep-dots"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+</div>
+
+<!-- ── CERTIFICATES ── -->
+<section id="certificates">
+  <div class="container">
+    <h2 class="section-title reveal" style="color:#39ff14;">CertificateZ</h2>
+    <p class="section-subtitle reveal">Proof that grinding actually works 💪</p>
+    <div class="section-divider reveal"><span>◆ ◆ ◆</span></div>
+
+    <div class="cert-grid">
+
+      <!-- CERT CARD 1
+           To use your real image, replace the cert-placeholder div with:
+           <img src="certificates/your_cert.jpg" alt="Certificate Name">
+      -->
+      <div class="cert-card reveal reveal-stagger from-left"
+           onclick="openCertLightbox('certimg/madb_html.jpg','Introduction to HTML')">
+        <div class="cert-img-wrap">
+          <img src="certimg/madb_html.jpg" alt="Certificate Name">
+          <div class="cert-overlay"><span class="cert-zoom-icon">🔍</span></div>
+        </div>
+        <div class="cert-info">
+          <p class="cert-title">Introduction to HTML</p>
+          <p class="cert-issuer">Issued by: Sololearn</p>
+          <p class="cert-date">February 2026</p>
+        </div>
+      </div>
+
+      <!-- CERT CARD 2 -->
+      <div class="cert-card reveal reveal-stagger"
+           onclick="openCertLightbox('certimg/madb_css.jpg','Introduction to CSS')">
+        <div class="cert-img-wrap">
+          <img src="certimg/madb_css.jpg" alt="Certificate Name">
+          <div class="cert-overlay"><span class="cert-zoom-icon">🔍</span></div>
+        </div>
+        <div class="cert-info">
+          <p class="cert-title">Introduction to CSS</p>
+          <p class="cert-issuer">Issued by: Sololearn</p>
+          <p class="cert-date">March 2026</p>
+        </div>
+      </div>
+
+      <!-- CERT CARD 3 -->
+      <div class="cert-card reveal reveal-stagger from-right"
+           onclick="openCertLightbox('certimg/madb_java.jpg','Introduction to Java')">
+        <div class="cert-img-wrap">
+          <img src="certimg/madb_java.jpg" alt="Certificate Name">
+          <div class="cert-overlay"><span class="cert-zoom-icon">🔍</span></div>
+        </div>
+        <div class="cert-info">
+          <p class="cert-title">Introduction to Java</p>
+          <p class="cert-issuer">Issued by: Sololearn</p>
+          <p class="cert-date">August 2025</p>
+        </div>
+      </div>
+
+      <!-- CERT CARD 4 -->
+      <div class="cert-card reveal reveal-stagger from-left"
+           onclick="openCertLightbox('certificates/cert_04.jpg','Certificate Title Here')">
+        <div class="cert-img-wrap">
+          <div class="cert-placeholder"><div class="cert-placeholder-icon">📜</div><span>ADD CERT IMAGE</span></div>
+          <div class="cert-overlay"><span class="cert-zoom-icon">🔍</span></div>
+        </div>
+        <div class="cert-info">
+          <p class="cert-title">Pending: Introduction to Python</p>
+          <p class="cert-issuer">Issued by: Sololearn</p>
+          <p class="cert-date">Month Year</p>
+        </div>
+      </div>
+
+      <!-- CERT CARD 5 -->
+      <div class="cert-card reveal reveal-stagger"
+           onclick="openCertLightbox('certificates/cert_05.jpg','Certificate Title Here')">
+        <div class="cert-img-wrap">
+          <div class="cert-placeholder"><div class="cert-placeholder-icon">📜</div><span>ADD CERT IMAGE</span></div>
+          <div class="cert-overlay"><span class="cert-zoom-icon">🔍</span></div>
+        </div>
+        <div class="cert-info">
+          <p class="cert-title">Pending: Introduction to SQL</p>
+          <p class="cert-issuer">Issued by: Sololearn</p>
+          <p class="cert-date">Month Year</p>
+        </div>
+      </div>
+
+      <!-- CERT CARD 6 -->
+      <div class="cert-card reveal reveal-stagger from-right"
+           onclick="openCertLightbox('certificates/cert_06.jpg','Certificate Title Here')">
+        <div class="cert-img-wrap">
+          <div class="cert-placeholder"><div class="cert-placeholder-icon">📜</div><span>ADD CERT IMAGE</span></div>
+          <div class="cert-overlay"><span class="cert-zoom-icon">🔍</span></div>
+        </div>
+        <div class="cert-info">
+          <p class="cert-title">Pending: Introduction to React</p>
+          <p class="cert-issuer">Issued by: Sololearn</p>
+          <p class="cert-date">Month Year</p>
+        </div>
+      </div>
+
+      <!-- ↑ Duplicate any cert-card block above to add more ↑ -->
+
+    </div>
+  </div>
+</section>
+
+<!-- Neon Sweep Divider -->
+<div class="neon-sweep">
+  <div class="neon-sweep-dots"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+</div>
+
+<!-- ── PORTFOLIO ── -->
+<section id="portfolio">
+  <div class="container">
+    <h2 class="section-title reveal" style="color:#bf5fff;">PortfolioZ</h2>
+    <p class="section-subtitle reveal">Things I've built - weird but proud of it 🟢🟠</p>
+    <div class="section-divider reveal"><span>◆ ◆ ◆</span></div>
+
+    <div class="portfolio-spotlight reveal">
+      <div class="featured-portfolio-card">
+
+        <span class="featured-badge">★ FEATURED PROJECT</span>
+
+        <div class="featured-img-wrap">
+          <!--
+            Replace the featured-placeholder div below with your screenshot:
+            <img src="images/portfolio_screenshot.jpg" alt="Portfolio Preview">
+          -->
+          <img src="certimg/portfoliSS.png" alt="Portfolio Preview">
+          <div class="featured-overlay">
+            <button class="featured-preview-btn"
+              onclick="openPortfolioModal(
+                'certimg/portfoliSS.png',
+                'MADB | Portfolio',
+                'A student developer\'s growing portfolio of web projects, skills, and the journey behind every line of code.',
+                'https://marshmallow707.github.io/MADB-Portfolio/'
+              )">
+              👁 PREVIEW
+            </button>
+          </div>
+        </div>
+
+        <div class="featured-info">
+          <div class="featured-info-left">
+            <p class="featured-title">MADB | Portfolio</p>
+            <p class="featured-desc">
+              Open to collaborations and connections in the tech world!
+              Aspiring developer with a foundation in web technologies, data science, and cybersecurity. 
+              Currently pursuing BSIS at Caraga State University - building skills, one project at a time.
+            </p>
+            <div class="featured-tags">
+              <span class="tag tag-green">Web Development</span>
+              <span class="tag tag-blue">Cybersecurity</span>
+              <span class="tag tag-orange">AI Ethics</span>
+              <span class="tag tag-purple">Vibe Coding</span>
+            </div>
+          </div>
+          <div class="featured-info-right">
+            <div>
+              <p class="featured-stat-label">STATUS</p>
+              <p class="featured-stat-value" style="color:#39ff14;">● LIVE</p>
+            </div>
+            <div>
+              <p class="featured-stat-label">COURSE</p>
+              <p class="featured-stat-value">IT110 - JK01</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Neon Sweep Divider -->
+<div class="neon-sweep">
+  <div class="neon-sweep-dots"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <p class="footer-tag">🟢🟠 Keep Being Weird 🟢🟠</p>
+  <p class="sub">© 2026 YxnZx | Otaku Blog. All Rights Reserved.</p>
+</footer>
+
+<!-- ── CERTIFICATE LIGHTBOX ── -->
+<div id="certLightbox" onclick="closeCertLightbox(event)">
+  <div class="lightbox-content">
+    <button class="lightbox-close" onclick="closeCertLightbox()">✖</button>
+    <img id="certLightboxImg" class="lightbox-img" src="" alt="Certificate">
+    <p id="certLightboxCaption" class="lightbox-caption"></p>
+  </div>
+</div>
+
+<!-- ── PORTFOLIO PREVIEW MODAL ── -->
+<div id="portfolioModal" onclick="closePortfolioModal(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closePortfolioModal()">✖</button>
+    <img id="modalImg" class="modal-preview-img" src="" alt="Portfolio Preview">
+    <h3 id="modalTitle" class="modal-title"></h3>
+    <p id="modalDesc" class="modal-desc"></p>
+    <a id="modalLink" class="modal-link" href="#" target="_blank">🔗 VIEW FULL PORTFOLIO</a>
+  </div>
+</div>
+
+<script>
+  // Cursor
+  const cursor = document.getElementById('cursorGlow');
+  let mouseX=0, mouseY=0, posX=0, posY=0;
+  document.addEventListener('mousemove', e => { mouseX=e.clientX; mouseY=e.clientY; cursor.style.opacity='1'; });
+  document.addEventListener('mouseleave', () => { cursor.style.opacity='0'; });
+  (function tick() {
+    posX += (mouseX-posX)*0.2;
+    posY += (mouseY-posY)*0.2;
+    cursor.style.transform = `translate(${posX}px,${posY}px) translate(-50%,-50%)`;
+    requestAnimationFrame(tick);
+  })();
+
+  // Scroll progress
+  window.addEventListener('scroll', () => {
+    const s = document.documentElement.scrollTop;
+    const h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    document.getElementById('progressBar').style.width = (s/h*100)+'%';
+  });
+
+  // Scroll reveal — fade up + slide from sides
+  function revealAll() {
+    document.querySelectorAll('.reveal').forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight - 80) {
+        el.classList.add('active');
+      }
+    });
+  }
+  window.addEventListener('scroll', revealAll);
+  revealAll();
+
+  // Certificate lightbox
+  function openCertLightbox(src, caption) {
+    document.getElementById('certLightboxImg').src = src;
+    document.getElementById('certLightboxCaption').textContent = caption;
+    document.getElementById('certLightbox').classList.add('active');
+  }
+  function closeCertLightbox(e) {
+    if (!e || e.target===document.getElementById('certLightbox'))
+      document.getElementById('certLightbox').classList.remove('active');
+  }
+
+  // Portfolio modal
+  function openPortfolioModal(imgSrc, title, desc, link) {
+    document.getElementById('modalImg').src = imgSrc;
+    document.getElementById('modalTitle').textContent = title;
+    document.getElementById('modalDesc').textContent = desc;
+    document.getElementById('modalLink').href = link;
+    document.getElementById('portfolioModal').classList.add('active');
+  }
+  function closePortfolioModal(e) {
+    if (!e || e.target===document.getElementById('portfolioModal'))
+      document.getElementById('portfolioModal').classList.remove('active');
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key==='Escape') { closeCertLightbox(); closePortfolioModal(); }
+  });
+</script>
+
+</body>
+</html>

@@ -316,3 +316,26 @@ document.querySelectorAll('.star').forEach(star => {
     });
   });
 });
+
+function toggleSidePanel() {
+    const panel = document.getElementById('sidePanel');
+    const trigger = document.getElementById('sideTabTrigger');
+    const overlay = document.getElementById('sidePanelOverlay');
+    const arrow = document.getElementById('sideTabArrow');
+
+    const isOpen = panel.classList.contains('open');
+
+    panel.classList.toggle('open');
+    trigger.classList.toggle('open');
+    overlay.classList.toggle('active');
+
+    arrow.textContent = isOpen ? '►' : '◄';
+  }
+
+  // Close on ESC key
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      const panel = document.getElementById('sidePanel');
+      if (panel.classList.contains('open')) toggleSidePanel();
+    }
+  });
