@@ -32,17 +32,17 @@ This project is a redesign of the original Bootstrap prototype.
 
 Features
 
-🎌 Anime-themed sections: News, Series, Movies, Music & Quotes
-🔽 Shrinking navbar on scroll
-🎧 Independent background music button
-🎬 Video background in the About section
-💚 Neon glow aesthetic with custom glowing cursor and scroll progress bar
-🖼️ Image carousel for favorite character showcase
-▶️ Auto-play video in the Series section
-🎵 Animated music title that glows and moves when playing, auto-stops when switching tracks
-🔐 Login with modal feature
-📂 Side tab with drawer for Certificates and Portfolio sections
-📱 Fully responsive - mobile mode replaces navbar with a toggle button
+- 🎌 Anime-themed sections: News, Series, Movies, Music & Quotes
+- 💚 Neon glow aesthetic with custom glowing cursor and scroll progress bar
+- 🔽 Shrinking navbar on scroll
+- 🎧 Independent background music button
+- 🎬 Video background in the About section
+- 🖼️ Image carousel for favorite character showcase
+- ▶️ Auto-play video in the Series section
+- 🎵 Animated music title that glows and moves when playing, auto-stops when switching tracks
+- 🔐 Login with modal feature
+- 📂 Side tab with drawer for Certificates and Portfolio sections
+- 📱 Fully responsive - mobile mode replaces navbar with a toggle button
 
 ---
 
